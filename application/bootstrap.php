@@ -89,6 +89,16 @@ Route::set('required', '<id>')
         'action'     => 'view',
     ));
     
+Route::set('login', 'login')
+    ->defaults(array(
+        'controller' => 'site',
+        'action'     => 'login'));
+  
+Route::set('logout', 'logout')
+    ->defaults(array(
+        'controller' => 'site',
+        'action'     => 'logout'));
+    
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'quotes',
