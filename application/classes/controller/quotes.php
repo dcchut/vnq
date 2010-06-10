@@ -14,7 +14,7 @@ class Controller_Quotes extends Controller_Site
         $quote_text = Arr::get($_POST, 'quote');
         
         if (empty($quote_text))
-            return $this->home();
+            return self::home();
             
         // insert the quote, it doesn't appear to be empty
         Model_Quotes::insert_quote($quote_text, 2);
@@ -26,10 +26,10 @@ class Controller_Quotes extends Controller_Site
     
     public function action_view($id)
     {
-        $quote = ORM::factory('quotes', $id);
+        $quote = ORM::factory('quote', $id);
         
         if (!$quote->loaded())
-            return $this->home();
+            return self::home();
 
         $this->template->content = VNQ::render_quote($quote);
     }
@@ -71,7 +71,7 @@ class Controller_Quotes extends Controller_Site
 	    $offset = $this->_quotes_per_page * $page;
 	    
 	    // get our quotes object
-	    $quotes = ORM::factory('quotes')->$method($this->_quotes_per_page, $offset);
+	    $quotes = ORM::factory('quote')->$method($this->_quotes_per_page, $offset);
 	    
 	    // run away if we didn't find anything
 	    if (count($quotes) == 0)

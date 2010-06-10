@@ -5,12 +5,7 @@ class Controller_Site extends Controller_Template
     public $template    = 'site/template'; 
     public $auto_render = TRUE;
     
-    protected function generate_heading($heading)
-    {
-        return View::factory('site/heading', array('heading' => $heading));
-    }
-    
-    protected function home()
+    protected static function home()
     {
         return Request::instance()->redirect('');
     }
@@ -39,5 +34,36 @@ class Controller_Site extends Controller_Template
             
             $this->template->styles = array_merge($this->template->styles, $styles);
         }
+    }
+
+    public function action_login()
+    {
+        if (VNQ::is_logged_in())
+            self::home();
+            
+        $this->template->content = View::factory('site/login');
+    }
+    
+    public function action_login2()
+    {
+        $username = Arr::get($_POST, 'username', FALSE);
+        $password = sha1(Arr::get($_POST, 'password', FALSE));
+        
+        $user = ORM::factory('user')->where('username', '=', $username)
+                                     ->where('password', '=', $password)
+                                     ->find_all();
+                                                 
+        // pee off, peon
+        if (count($user) == 0)
+            Request::instance()->redirect('site/login');
+            
+        VNQ::login();
+        self::home();
+    }
+    
+    public function action_logout()
+    {
+        VNQ::logout();
+        self::home();
     }
 }

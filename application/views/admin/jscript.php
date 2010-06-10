@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 	$(".accept").click(function(e){
 		qtf = "#qt" + $(this).attr('id');
-
 		if ($(qtf).attr('edit') == 1) {
 			// replace with what we have moderated to
 			post_status($(this).attr('id'), 1, $(qtf).val());

@@ -83,11 +83,6 @@ Kohana::modules(array(
  * defaults for the URI.
  */
 
-Route::set('admin.js', 'media/admin.js')
-    ->defaults(array(
-        'controller' => 'admin',
-        'action'     => 'js'));
-    
 Route::set('required', '<id>')
     ->defaults(array(
         'controller' => 'quotes',

@@ -2,57 +2,33 @@
 
 class Controller_Admin extends Controller_Site
 {
-    public function before()
+    public function before() 
     {
         parent::before();
 
-        if (!VNQ::is_admin())
-            return $this->home();
+        if (!VNQ::is_logged_in())
+            return  self::home();
         
-        $this->template->scripts = array('media/admin.js');
+        // All the pages here need the jscript, chuck it in there
+        $this->template->scripts = array('admin/jscript');
     }
     
-    
-    public function action_moderate2()
-    {
-        $id     = (int)Arr::get($_POST, 'id', 0);
-        $status = (int)Arr::get($_POST, 'status', 0);
-		$text   = Arr::get($_POST, 't', FALSE);
-		
-        // rubbish status, throw it away!
-        if (!in_array($status, array(1, 2, 3)))
-            exit('0');
-     
-        // does this quote exist?
-        $quote = ORM::factory('quotes', $id);
-        
-        if (!$quote->loaded())
-            exit('0');
-            
-        $quote->status = $status;
-        
-        if ($text != FALSE)
-			$quote->quote = $text;
-        
-        $quote->save();
-            
-        exit('1');
-    }
     /**
-     * 	Special magic JS
+     *  Present the jscript needed to do admin actions
      */
-    public function action_js()
+    public function action_jscript()
     {
-        header('Content-Type: text/javascript');
-        header("cache-control: no-store, no-cache, must-revalidate"); 
-        header("Pragma: no-cache");
-        echo View::factory('admin/js');
-        exit();
+        $this->auto_render = FALSE;
+        
+        $this->request->response = View::factory('admin/jscript');
     }
     
+    /**
+     *  Show the quotes that need to be moderated
+     */
     public function action_moderate()
     {
-        $unmoderated = ORM::factory('quotes')->unmoderated();
+        $unmoderated = ORM::factory('quote')->unmoderated();
         
         if (count($unmoderated) == 0)
         {
@@ -65,5 +41,34 @@ class Controller_Admin extends Controller_Site
 				$this->template->content  .= VNQ::render_quote($quote, TRUE, TRUE);
 			}
         }
+    }
+
+    /**
+     *  Actually moderate a specific quote (done using AJAX)
+     */
+    public function action_moderate2()
+    {
+        $id     = (int)Arr::get($_POST, 'id', 0);
+        $status = (int)Arr::get($_POST, 'status', 0);
+		$text   = Arr::get($_POST, 't', FALSE);
+		
+        // rubbish status, throw it away!
+        if (!in_array($status, array(1, 2, 3)))
+            exit('0');
+     
+        // does this quote exist?
+        $quote = ORM::factory('quote', $id);
+        
+        if (!$quote->loaded())
+            exit('0');
+            
+        $quote->status = $status;
+        
+        if ($text != FALSE)
+			$quote->quote = $text;
+        
+        $quote->save();
+            
+        exit('1');
     }
 }
