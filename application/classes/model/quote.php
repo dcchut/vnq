@@ -1,11 +1,39 @@
 <?php
 class Model_Quote extends ORM
 {
+    public static function vote($quote_id, $up)
+    {     
+        $quote = self::factory('quote')->where('id', '=', $quote_id)
+                                       ->find_all();
+        
+        if (count($quote) == 0)
+            return FALSE;
+            
+        // only vote once per cookie, noob
+        $voted = (array)Session::instance()->get('voted');
+        
+        if (array_key_exists($quote_id, $voted))
+            return FALSE;
+            
+        $voted[$quote_id] = TRUE;
+        
+        Session::instance()->set('voted', $voted);
+            
+        if ($up)
+            $values = array('up' => DB::expr('up + 1'));
+        else
+            $values = array('down' => DB::expr('down + 1'));
+            
+        DB::update('quotes')->set($values)->where('id', '=', $quote_id)->execute();
+        
+        return TRUE;
+    }
+    
     public static function insert_quote($text, $status)
     {
         // does this quote exist already?
-        $quote = self::reset()->where('quote', '=', $text)
-                              ->find_all();
+        $quote = self::factory('quote')->where('quote', '=', $text)
+                                       ->find_all();
         
         if (count($quote) == 0)
         {

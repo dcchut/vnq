@@ -4,6 +4,22 @@ class Controller_Quotes extends Controller_Site
 {
     protected $_quotes_per_page = 1000; // if you make this zero, I will kill you
 
+    public function action_vote()
+    {
+        $quote_id = (int)Arr::get($_POST, 'id', 0);
+        $up       = Arr::get($_POST, 'up', 0); 
+      
+        if (!in_array($up, array('true', 'false')))
+            exit('0');
+
+        $vote = Model_Quote::vote($quote_id, ($up == 'true'));
+ 
+        if (!$vote)
+            exit('0');
+        else
+            exit('1');
+    }
+    
     public function action_submit()
     {
         $this->template->content = View::factory('quotes/submit');
@@ -17,7 +33,7 @@ class Controller_Quotes extends Controller_Site
             return self::home();
             
         // insert the quote, it doesn't appear to be empty
-        Model_Quotes::insert_quote($quote_text, 2);
+        Model_Quote::insert_quote($quote_text, 2);
         
         // show them nice shit
         $this->template->content = View::factory('quotes/submit2');
@@ -94,5 +110,4 @@ class Controller_Quotes extends Controller_Site
 	    
 	    return $output;
 	}
-	
 }

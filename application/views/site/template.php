@@ -3,6 +3,7 @@
       <title><?php echo $title ?></title>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
       <?php echo HTML::script('media/jquery.js') ?>
+      <?php echo HTML::script('site/vnqjs') ?>
       <?php foreach ($styles as $file) echo HTML::style($file), "\n" ?>
       <?php foreach ($scripts as $file) echo HTML::script($file), "\n" ?>
     </head>
