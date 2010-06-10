@@ -1,16 +1,15 @@
 <?php
-class Model_Quotes extends ORM
+class Model_Quote extends ORM
 {
-    protected $_table_name = 'quotes';
-    
     public static function insert_quote($text, $status)
     {
         // does this quote exist already?
-        $quote = ORM::factory('quotes')->where('quote', '=', $text)->find_all();
+        $quote = self::reset()->where('quote', '=', $text)
+                              ->find_all();
         
         if (count($quote) == 0)
         {
-            $quote         = ORM::factory('quotes');
+            $quote         = ORM::factory('quote');
             $quote->date   = time();
             $quote->quote  = $text;
             $quote->status = $status;

@@ -10,10 +10,14 @@
         <div id="header">
         	<span class="huge">VNQ</span><span class="quote"> by dcc, 2010.</span>
         	<span id="topr"><?php
-        	if (VNQ::is_admin())
+        	if (VNQ::is_logged_in())
         	    echo HTML::anchor('admin/moderate', 'Moderate') . ' - ';
         	
-        	echo HTML::anchor('quotes/submit', 'Submit'); ?> - <?php echo HTML::anchor('quotes/top', 'Top'); ?> - <?php echo HTML::anchor('quotes/recent', 'Recent'); ?></span> 
+        	echo HTML::anchor('quotes/submit', 'Submit'); ?> - <?php echo HTML::anchor('quotes/top', 'Top'); ?> - <?php echo HTML::anchor('quotes/recent', 'Recent'); 
+        	
+        	if (VNQ::is_logged_in())
+        	    echo ' - ' . HTML::anchor('site/logout', 'Logout');
+        	?></span> 
         </div>
         <div id="content">
           <?php echo $content ?>

@@ -1,1 +1,0 @@
-<b><?php echo $heading; ?></b><br />

@@ -4,6 +4,10 @@ body, input {
 	margin: 5px;	
 }
 
+input {
+	padding: 3px;
+}
+
 textarea {
 	width: 600px;
 	height: 150px;
