@@ -89,12 +89,12 @@ Route::set('required', '<id>')
         'action'     => 'view',
     ));
     
-Route::set('login', 'login')
+Route::set('lgin', 'login')
     ->defaults(array(
         'controller' => 'site',
         'action'     => 'login'));
   
-Route::set('logout', 'logout')
+Route::set('lgout', 'logout')
     ->defaults(array(
         'controller' => 'site',
         'action'     => 'logout'));
