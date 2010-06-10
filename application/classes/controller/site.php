@@ -66,4 +66,10 @@ class Controller_Site extends Controller_Template
         VNQ::logout();
         self::home();
     }
+    
+    public function action_vnqjs()
+    {
+        $this->auto_render = FALSE;
+        $this->request->response = View::factory('site/vnqjs');
+    }
 }

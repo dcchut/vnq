@@ -52,17 +52,20 @@ a:visited {
 	font-weight: bold;
 }
 
-.up { 
-	color: green;
-	font-weight: bold;
-}
-
-.down {
-	color: red;
-	font-weight: bold;
-}
-
 .quote {
 	margin: 0px;
 }
+
+a.up { 
+	color: green;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+a.down {
+	color: red;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
 
