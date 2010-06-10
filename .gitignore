@@ -1,6 +1,3 @@
 /.settings/
 .buildpath
 .project
-/application/cache/
-/application/config/
-/application/logs/
