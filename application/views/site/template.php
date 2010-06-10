@@ -17,7 +17,7 @@
         	echo HTML::anchor('quotes/submit', 'Submit'); ?> - <?php echo HTML::anchor('quotes/top', 'Top'); ?> - <?php echo HTML::anchor('quotes/recent', 'Recent'); 
         	
         	if (VNQ::is_logged_in())
-        	    echo ' - ' . HTML::anchor('logout', 'Logout');
+        	    echo ' - ' . HTML::anchor('site/logout', 'Logout');
         	?></span> 
         </div>
         <div id="content">
