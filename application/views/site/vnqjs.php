@@ -1,9 +1,11 @@
 $(document).ready(function(){
-	$(".up").click(function(){
+	$(".up").click(function(e){
+		e.preventDefault();
 		vote(true, $(this));
 	});
 	
-	$(".down").click(function(){
+	$(".down").click(function(e){
+		e.preventDefault();
 		vote(false, $(this));
 	});
 });
