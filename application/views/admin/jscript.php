@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	$(".accept").click(function(e){
+	    e.preventDefault();
 		qtf = "#qt" + $(this).attr('id');
 		if ($(qtf).attr('edit') == 1) {
 			// replace with what we have moderated to
@@ -11,6 +12,7 @@ $(document).ready(function(){
 	});
 	
 	$(".decline").click(function(e){
+	    e.preventDefault();
 		post_status($(this).attr('id'), 3, '');
 	});
 	
