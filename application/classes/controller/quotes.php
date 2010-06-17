@@ -44,7 +44,7 @@ class Controller_Quotes extends Controller_Site
     {
         $quote = ORM::factory('quote', $id);
         
-        if (!$quote->loaded() || $quote->active != 1)
+        if (!$quote->loaded() || $quote->status != 1)
             return self::home();
             
        
