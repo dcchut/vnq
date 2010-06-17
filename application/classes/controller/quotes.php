@@ -44,10 +44,8 @@ class Controller_Quotes extends Controller_Site
     {
         $quote = ORM::factory('quote', $id);
         
-        if (!$quote->loaded() || $quote->status != 1)
+        if (!$quote->loaded() || !$quote->is_public())
             return self::home();
-            
-       
 
         $this->template->content = VNQ::render_quote($quote);
     }
