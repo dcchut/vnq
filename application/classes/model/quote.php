@@ -93,6 +93,6 @@ class Model_Quote extends ORM
     
     public function is_public()
     {
-		return ($this->status == 1);
+		return ($this->loaded() && $this->status == 1);
 	}
 }
