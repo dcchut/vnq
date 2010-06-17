@@ -90,4 +90,9 @@ class Model_Quote extends ORM
                     ->order_by('date', 'ASC')
                     ->find_all();
     }
+    
+    public function is_public()
+    {
+		return ($this->status == 1);
+	}
 }
