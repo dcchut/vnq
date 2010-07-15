@@ -41,6 +41,8 @@ class Model_Quote extends ORM
             $quote->date   = time();
             $quote->quote  = $text;
             $quote->status = $status;
+            $quote->up     = 0;
+            $quote->down   = 0;
             
             return $quote->save();
         }
