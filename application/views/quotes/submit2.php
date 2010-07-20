@@ -1,1 +1,1 @@
-Your quote has been submitted.  Moderation may take some time, as I'm lazy.
+Your quote has been submitted.  Moderation may take some time.
