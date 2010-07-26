@@ -1,5 +1,5 @@
 body, input {
-	background-color: #EDEDED;
+	background-color: #E5F9FF;
 	font: 11pt monospace;
 	margin: 5px;	
 }
@@ -13,6 +13,28 @@ textarea {
 	height: 150px;
 }
 
+#header {
+	margin: 15px;
+	padding: 13px;
+	padding-top: 10px;
+	background-color: #D8CCFF;
+	border: 1px solid #D46600;
+}
+
+#content {
+	margin: 15px;
+	padding: 13px;
+	background-color: #D8CCFF;
+	border: 1px solid #D46600;
+}
+
+#topr {
+	float: right;
+	margin-right: 13px;
+	position: relative;
+	top: 6px;
+}
+
 a {
 	text-decoration:none;
 }
@@ -23,28 +45,6 @@ a:hover {
 
 a:visited {
 	color:#00f;
-}
-
-#header {
-	margin: 15px;
-	padding: 13px;
-	padding-top: 10px;
-	background-color: #B2D300;
-	border: 1px solid #D46600;
-}
-
-#content {
-	margin: 15px;
-	padding: 13px;
-	background-color: #B2D300;
-	border: 1px solid #D46600;W
-}
-
-#topr {
-	float: right;
-	margin-right: 13px;
-	position: relative;
-	top: 6px;
 }
 
 .huge {
