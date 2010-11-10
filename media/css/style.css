@@ -50,6 +50,8 @@ a:visited {
 .huge {
 	font-size: xx-large;
 	font-weight: bold;
+    text-decoration:none;
+    color: #000000;
 }
 
 .quote {
