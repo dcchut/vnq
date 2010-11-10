@@ -7,12 +7,8 @@ class Controller_Quotes extends Controller_Site
     public function action_vote()
     {
         $quote_id = (int)Arr::get($_POST, 'id', 0);
-        $up       = Arr::get($_POST, 'up', 0); 
-      
-        if (!in_array($up, array('true', 'false')))
-            exit('0');
 
-        $vote = Model_Quote::vote($quote_id, ($up == 'true'));
+        $vote = Model_Quote::vote($quote_id);
  
         if (!$vote)
             exit('0');

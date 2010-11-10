@@ -1,7 +1,7 @@
 <?php
 class Model_Quote extends ORM
 {
-    public static function vote($quote_id, $up)
+    public static function vote($quote_id)
     {     
         $quote = self::factory('quote')->where('id', '=', $quote_id)
                                        ->find_all();
@@ -19,10 +19,7 @@ class Model_Quote extends ORM
         
         Session::instance()->set('voted', $voted);
             
-        if ($up)
-            $values = array('up' => DB::expr('up + 1'));
-        else
-            $values = array('down' => DB::expr('down + 1'));
+        $values = array('up' => DB::expr('up + 1'));
             
         DB::update('quotes')->set($values)->where('id', '=', $quote_id)->execute();
         
@@ -74,7 +71,7 @@ class Model_Quote extends ORM
                     ->where('status', '=', 1)
                     ->limit((int)$limit)
                     ->offset((int)$offset)
-                    ->order_by(DB::expr('up - down'), 'DESC')
+                    ->order_by(DB::expr('up'), 'DESC')
                     ->find_all();
     }
     
