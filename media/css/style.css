@@ -52,7 +52,7 @@ a:visited {
 	font-weight: bold;
 }
 
-.black {
+a.black {
     text-decoration: none;
     color: #000000;
 }
@@ -63,12 +63,6 @@ a:visited {
 
 a.up { 
 	color: green;
-	font-weight: bold;
-	font-size: 14pt;
-}
-
-a.down {
-	color: red;
 	font-weight: bold;
 	font-size: 14pt;
 }
