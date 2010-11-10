@@ -50,6 +50,9 @@ a:visited {
 .huge {
 	font-size: xx-large;
 	font-weight: bold;
+}
+
+a.huge {
     text-decoration:none;
     color: #000000;
 }
