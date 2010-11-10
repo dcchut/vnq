@@ -9,7 +9,7 @@
     </head>
     <body>
         <div id="header">
-        	<span class="huge">VNQ</span><span class="quote"> by dcc, 2010.</span>
+        	<span class="huge"><a href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by dcc, 2010.</span>
         	<span id="topr"><?php
         	if (VNQ::is_logged_in())
         	    echo HTML::anchor('admin/moderate', 'Moderate') . ' - ';
