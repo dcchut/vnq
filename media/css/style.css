@@ -52,8 +52,8 @@ a:visited {
 	font-weight: bold;
 }
 
-a.huge {
-    text-decoration:none;
+.black {
+    text-decoration: none;
     color: #000000;
 }
 
