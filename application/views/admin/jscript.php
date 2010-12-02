@@ -29,15 +29,14 @@ $(document).ready(function(){
 function post_status(id, status, t){
 	$.post('<?php echo URL::site('admin/moderate2'); ?>', {'id' : id, 'status' : status, 't' : t}, function(data){
 		if (data == 1){
-			$("#q" + id).hide("slow");
+			$("#q" + id).hide("slow", function(){
+                // if we've moderated everything, show a nice message
+                $("#qhead").text('no quotes to moderatoe').show("slow");
+            });
 		} else {
 			alert('something bad happened!');
 			alert(data);
 		}
-
-        // if we've moderated everything, show this
-        if ($("qmain:nothidden").size() == 0)
-            $("#qhead").text('no quotes to moderate').show("slow");
 	});
 };
 	
