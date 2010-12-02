@@ -67,4 +67,6 @@ a.up {
 	font-size: 14pt;
 }
 
-
+div.hide {
+    display: none;
+}

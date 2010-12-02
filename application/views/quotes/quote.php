@@ -1,4 +1,4 @@
-<span id="q<?php echo $quote->id; ?>">
+<span id="q<?php echo $quote->id; ?>" class="qmain">
     <span class="quotehead">
         <?php if (!$moderate): 
                   echo HTML::anchor($quote->id, '#' . $quote->id); ?>&nbsp;<a href="#" class="up">⇧</a>(+<span id="qu<?php echo $quote->id; ?>"><?php echo $quote->up; ?></span>)<?php 
