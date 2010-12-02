@@ -31,7 +31,7 @@ function post_status(id, status, t){
 		if (data == 1){
 			$("#q" + id).hide("slow", function(){
                 // if we've moderated everything, show a nice message
-                if ($(".qmain:nothidden").size() == 0)
+                if ($(".qmain:not(:hidden)").size() == 0)
                     $("#qhead").text('no quotes to moderate').show("slow");
             });
 		} else {
