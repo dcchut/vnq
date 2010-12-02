@@ -34,6 +34,10 @@ function post_status(id, status, t){
 			alert('something bad happened!');
 			alert(data);
 		}
+
+        // if we've moderated everything, show this
+        if ($("qmain:nothidden").size() == 0)
+            $("#qhead").text('no quotes to moderate').show("slow");
 	});
 };
 	

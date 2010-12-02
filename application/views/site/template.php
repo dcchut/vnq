@@ -23,6 +23,7 @@
         	?></span> 
         </div>
         <div id="content">
+            <div id="qhead" class="hide"></div>
           <?php echo $content ?>
           	<br />
         </div>
