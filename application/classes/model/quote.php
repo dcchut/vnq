@@ -1,13 +1,17 @@
 <?php
 class Model_Quote extends ORM
 {
+    /**
+     * Register an upvote for this quote
+     * @param integer $quote_id
+     * @return bool
+     */
     public static function vote($quote_id)
-    {     
-        $quote = self::factory('quote')->where('id', '=', $quote_id)
-                                       ->find_all();
-        
-        if (count($quote) == 0)
+    {
+        if (!self::exists($quote_id))
             return FALSE;
+
+        $quote = new Model_Quote($quote_id);
             
         // only vote once per cookie, noob
         $voted = (array)Session::instance()->get('voted');
@@ -25,7 +29,13 @@ class Model_Quote extends ORM
         
         return TRUE;
     }
-    
+
+    /**
+     * Insert a new quote with $text and $status into the DB
+     * @param string $text
+     * @param integer $status
+     * @return <type>
+     */
     public static function insert_quote($text, $status)
     {
         // does this quote exist already?
@@ -106,10 +116,4 @@ class Model_Quote extends ORM
     {
 		return ($this->loaded() && $this->status == 1);
 	}
-
-    public function set_status($status)
-    {
-        $this->status = $status;
-
-    }
 }
