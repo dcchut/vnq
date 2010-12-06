@@ -53,11 +53,8 @@ class Controller_Admin extends Controller_Site
 		$text   = Arr::get($_POST, 't', FALSE);
 		
         // status must be 1, 2, 3
-        if (!in_array($status, array(1, 2, 3)))
-            exit(0);
-     
-        if (!Model_Quote::exists($id))
-            exit(0);
+        if (!in_array($status, array(1, 2, 3)) || !!Model_Quote::exists($id))
+            exit('0');
 
         // save the stuff
         $quote         = ORM::factory('quote', $id);
@@ -68,6 +65,6 @@ class Controller_Admin extends Controller_Site
         
         $quote->save();
 
-        exit(2);
+        exit('1');
     }
 }
