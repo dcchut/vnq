@@ -11,9 +11,9 @@ class Controller_Quotes extends Controller_Site
         $vote = Model_Quote::vote($quote_id);
  
         if (!$vote)
-            exit('0');
+            exit(0);
         else
-            exit('1');
+            exit(1);
     }
     
     public function action_submit()

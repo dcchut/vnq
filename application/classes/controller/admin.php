@@ -52,23 +52,22 @@ class Controller_Admin extends Controller_Site
         $status = (int)Arr::get($_POST, 'status', 0);
 		$text   = Arr::get($_POST, 't', FALSE);
 		
-        // rubbish status, throw it away!
+        // status must be 1, 2, 3
         if (!in_array($status, array(1, 2, 3)))
-            exit('0');
+            exit(0);
      
-        // does this quote exist?
-        $quote = ORM::factory('quote', $id);
-        
-        if (!$quote->loaded())
-            exit('0');
-            
+        if (!Model_Quote::exists($id))
+            exit(0);
+
+        // save the stuff
+        $quote         = ORM::factory('quote', $id);
         $quote->status = $status;
         
-        if ($text != FALSE)
-			$quote->quote = $text;
+        if ($test != FALSE)
+            $quote->quote  = $text;
         
         $quote->save();
-            
-        exit('1');
+
+        exit(2);
     }
 }

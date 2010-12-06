@@ -74,14 +74,22 @@ class Model_Quote extends ORM
                     ->order_by(DB::expr('up'), 'DESC')
                     ->find_all();
     }
-    
+
+    /**
+     * Count the total number of active quotes
+     * @return integer
+     */
     public function total()
     {
         return (int)$this->reset()
                          ->where('status', '=', 1)
                          ->count_all();
     }
-    
+
+    /**
+     * Get all the unmoderated quotes
+     * @return Model_Quote
+     */
     public function unmoderated()
     {
         return $this->reset()
@@ -89,9 +97,19 @@ class Model_Quote extends ORM
                     ->order_by('date', 'ASC')
                     ->find_all();
     }
-    
+
+    /**
+     * Is this quote publically viewable?
+     * @return bool
+     */
     public function is_public()
     {
 		return ($this->loaded() && $this->status == 1);
 	}
+
+    public function set_status($status)
+    {
+        $this->status = $status;
+
+    }
 }
