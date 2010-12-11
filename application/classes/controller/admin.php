@@ -53,7 +53,7 @@ class Controller_Admin extends Controller_Site
 		$text   = Arr::get($_POST, 't', FALSE);
 		
         // status must be 1, 2, 3
-        if (!in_array($status, array(1, 2, 3)) || !!Model_Quote::exists($id))
+        if (!in_array($status, array(1, 2, 3)) || !Model_Quote::exists($id))
             exit('0');
 
         // save the stuff
