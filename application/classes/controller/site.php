@@ -33,6 +33,9 @@ class Controller_Site extends Controller_Template
             $styles = array('media/css/style.css',);
             
             $this->template->styles = array_merge($this->template->styles, $styles);
+
+            // set the special things here
+            $this->template->is_ninwa = $_SERVER['REMOTE_ADDR'] == '203.219.214.77';
         }
     }
 
