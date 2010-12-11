@@ -60,7 +60,7 @@ class Controller_Admin extends Controller_Site
         $quote         = ORM::factory('quote', $id);
         $quote->status = $status;
         
-        if ($test != FALSE)
+        if ($text != FALSE)
             $quote->quote  = $text;
         
         $quote->save();
