@@ -6,7 +6,7 @@
 <br />
 
 <div class="modl">Action:</div>
-<div class="modr"><?php echo <?php echo Form::select('action', array('show', 'hide')); ?></div>
+<div class="modr"><?php echo Form::select('action', array('show', 'hide')); ?></div>
 <br />
 
 <?php echo Form::submit('submit', 'Submit'); ?>
