@@ -5,6 +5,7 @@
     <div class="modl">Quote (ID):</div>
     <div class="modr"><?php echo Form::input('qid'); ?></div>
 </div>
+<br />
 
 <div class="mod">
     <div class="modl">Action:</div>
