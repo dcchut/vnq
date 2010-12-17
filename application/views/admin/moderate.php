@@ -2,7 +2,7 @@
 <?php echo Form::open('admin/moderate/'); ?><br />
 
 Quote ID:<br />
-<?php echo Form::input('qid'); ?><br /><br />
+<?php echo Form::input('qid', FALSE, array('class' => 'qid')); ?><br /><br />
 
 Action:<br />
 <?php echo Form::select('action', array('show', 'hide')); ?><br /><br />
