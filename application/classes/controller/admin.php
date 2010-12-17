@@ -42,7 +42,11 @@ class Controller_Admin extends Controller_Site
 			}
         }
 
-        $this->template->content .= View::factory('admin/moderate');
+
+        // what are the moderation options?
+        $moderation_options = array('hide' => 'hide', 'show' => 'show');
+       
+        $this->template->content .= View::factory('admin/moderate', array('options' => $moderation_options));
     }
 
     /**
