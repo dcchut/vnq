@@ -4,7 +4,7 @@
 <b>quote fiddle panel:</b><br /><br />
 <?php echo Form::open('admin/moderate/', array('class', 'hide')); ?>
 <?php if (isset($message) && !empty($message)): ?>
-<p class="np"><?php echo $message; ?></p>
+<p class="np"><?php echo $message; ?></p><br />
 <?php endif; ?>
 <p class="np">qid:</p>
 <?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br /><br />
