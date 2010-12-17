@@ -3,6 +3,9 @@
 <br /><br />
 <b>quote fiddle panel:</b><br />
 <?php echo Form::open('admin/moderate/'); ?>
+<?php if (isset($message) && !empty($message)): ?>
+<p><?php echo $message; ?></p>
+<?php endif; ?>
 <p>qid:</p>
 <?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br />
 
