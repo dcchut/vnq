@@ -77,7 +77,7 @@ class Controller_Admin extends Controller_Site
                 $quote->save();
 
                 // set a message
-                $view_data['message'] = 'moderation successful (' . $id . ')';
+                $view_data['message'] = 'moderation successful (' . $id . ', ' . $action . ')';
             }
             else
             {
