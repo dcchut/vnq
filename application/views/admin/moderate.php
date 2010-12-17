@@ -9,7 +9,7 @@
 <p class="np">qid:</p>
 <?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br />
 
-<p class="np">action:</p>
+<p class="">action:</p>
 <?php echo Form::select('action', $options); ?><br /><br />
 
 <?php echo Form::submit('submit', 'do it'); ?>
