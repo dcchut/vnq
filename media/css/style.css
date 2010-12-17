@@ -37,17 +37,16 @@ textarea {
 
 div.mod {
     width: 500px;
-    padding: 5px;
     overflow: auto;
 }
 div.modl {
     float: left;
-    width: 100px;
+    width: 200px;
 }
 
 div.modr {
     float: right;
-    width: 400px;
+    width: 200px;
     vertical-align: middle;
 }
 
