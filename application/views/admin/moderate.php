@@ -1,5 +1,5 @@
 <br /><br />
-<b>moderation panel:</b><br /><br />
+<b>moderation panel:</b><br />
 <?php echo Form::open('admin/moderate/'); ?><br />
 
 qid:<br />
