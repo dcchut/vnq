@@ -48,6 +48,7 @@ div.modl {
 div.modr {
     float: right;
     width: 400px;
+    vertical-align: middle;
 }
 
 a {
