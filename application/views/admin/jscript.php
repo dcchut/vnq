@@ -32,7 +32,9 @@ function post_status(id, status, t){
 			$("#q" + id).hide("slow", function(){
                 // if we've moderated everything, show a nice message
                 if ($(".qmain:visible").size() == 0)
-                    $("#qhead").html('no quotes to accept<br />').show("slow");
+                    location.reload();
+
+                //$("#qhead").html('no quotes to accept<br />').show("slow");
             });
 		} else {
 			alert('something bad happened!');
