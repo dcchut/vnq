@@ -74,11 +74,11 @@ class Controller_Admin extends Controller_Site
                 $quote->save();
 
                 // set a message
-                $view_data['message'] = 'moderation successful (' . $id . ', ' . $action . ')';
+                $view_data['message'] = 'fiddle successful (' . $id . ', ' . $action . ')';
             }
             else
             {
-                $view_data['message'] = 'moderation failed';
+                $view_data['message'] = 'fiddle failed';
             }
         }
 
