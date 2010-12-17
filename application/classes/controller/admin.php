@@ -41,6 +41,8 @@ class Controller_Admin extends Controller_Site
 				$this->template->content  .= VNQ::render_quote($quote, TRUE, TRUE);
 			}
         }
+
+        $this->template->content .= View::factory('admin/moderate');
     }
 
     /**
