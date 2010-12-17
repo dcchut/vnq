@@ -35,6 +35,10 @@ textarea {
 	top: 6px;
 }
 
+.mod {
+    width: 300px;
+    height: 15px;
+}
 .modl {
     /* nothing here*/
 }
