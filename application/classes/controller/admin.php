@@ -30,24 +30,30 @@ class Controller_Admin extends Controller_Site
     {
         $unmoderated = ORM::factory('quote')->unmoderated();
 
+        // parameters to pass to the view
+        $view_data = array();
+
         // here we build the 'top' half of the moderation section
-        $panel  = '';
+        $view_data['panel'] = '';
 
         if (count($unmoderated) == 0)
         {
-            $panel = 'no quotes to moderate';
+            $view_data['panel'] = 'no quotes to moderate';
 		}
 		else
 		{
 			foreach ($unmoderated as $quote)
 			{
-                $panel .= VNQ::render_quote($quote, TRUE, TRUE);
+                $view_data['panel'] .= VNQ::render_quote($quote, TRUE, TRUE);
 			}
         }
 
 
-        // what are the moderation options?
-        $moderation_options = array('hide' => 'hide', 'show' => 'show');
+
+
+        // what are the moderation options avaiable
+        // possibly put this closer to the model ~_~
+        $view_data['options'] = array('hide' => 'hide', 'show' => 'show');
 
         // have we moderated anything?
         $id     = (int)Arr::get($_POST, 'id', 0);
@@ -69,10 +75,17 @@ class Controller_Admin extends Controller_Site
 
                 // save the quote
                 $quote->save();
+
+                // set a message
+                $view_data['message'] = 'moderation successful';
+            }
+            else
+            {
+                $view_data['message'] = 'moderation failed';
             }
         }
 
-        $this->template->content .= View::factory('admin/moderate', array('panel' => $panel, 'options' => $moderation_options));
+        $this->template->content .= View::factory('admin/moderate', $view_data);
     }
 
     /**
