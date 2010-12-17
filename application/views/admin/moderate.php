@@ -1,6 +1,6 @@
 <b>quote acceptance panel:</b><br /><br />
 <?php echo $panel; ?>
-<br /><br />
+<br />
 <b>quote fiddle panel:</b><br /><br />
 <?php echo Form::open('admin/moderate/', array('class', 'hide')); ?>
 <?php if (isset($message) && !empty($message)): ?>
