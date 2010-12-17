@@ -6,10 +6,10 @@
 <?php if (isset($message) && !empty($message)): ?>
 <p><?php echo $message; ?></p>
 <?php endif; ?>
-<p>qid:</p>
+<p class="np">qid:</p>
 <?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br />
 
-<p>action:</p>
+<p class="np">action:</p>
 <?php echo Form::select('action', $options); ?><br /><br />
 
 <?php echo Form::submit('submit', 'do it'); ?>
