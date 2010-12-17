@@ -41,7 +41,7 @@ class Controller_Admin extends Controller_Site
             $view_data['panel'] = 'no quotes to accept<br /><br />';
 		}
 		else
-		{
+        {
 			foreach ($unmoderated as $quote)
 			{
                 $view_data['panel'] .= VNQ::render_quote($quote, TRUE, TRUE);
