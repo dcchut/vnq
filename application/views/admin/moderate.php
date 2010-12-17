@@ -3,7 +3,7 @@
 <?php echo Form::open('admin/moderate/'); ?><br />
 
 <p>qid:</p>
-<?php echo Form::input('qid', FALSE, array('class' => 'qid')); ?><br />
+<?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br />
 
 <p>action:</p>
 <?php echo Form::select('action', $options); ?><br /><br />

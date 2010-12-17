@@ -45,7 +45,25 @@ class Controller_Admin extends Controller_Site
 
         // what are the moderation options?
         $moderation_options = array('hide' => 'hide', 'show' => 'show');
-       
+
+        // have we moderated anything?
+        $id     = (int)Arr::get($_POST, 'id', 0);
+        $action = Arr::get($_POST, 'action', FALSE);
+
+        if ($id > 0 && $action !== FALSE && Model_Quote::exists($id) && in_array($action, $moderation_options))
+        {
+            $quote = ORM::factory('quote', $id);
+
+            if ($action == 'hide')
+                $quote->status = 3;
+
+            if ($action == 'show')
+                $quote->status = 1;
+
+            // save the quote
+            $quote->save();
+        }
+
         $this->template->content .= View::factory('admin/moderate', array('options' => $moderation_options));
     }
 
