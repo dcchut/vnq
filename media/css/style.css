@@ -70,3 +70,7 @@ a.up {
 div.hide {
     display: none;
 }
+
+input.qid {
+    width: 30px;
+}
