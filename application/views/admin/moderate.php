@@ -1,10 +1,11 @@
 <br />
+<b>moderation panel:</b>
 <?php echo Form::open('admin/moderate/'); ?><br />
 
-Quote ID:<br />
+qid:<br />
 <?php echo Form::input('qid', FALSE, array('class' => 'qid')); ?><br /><br />
 
-Action:<br />
+action:<br />
 <?php echo Form::select('action', array('show', 'hide')); ?><br /><br />
 
 <?php echo Form::submit('submit', 'Submit'); ?>
