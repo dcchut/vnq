@@ -6,7 +6,7 @@
 <?php echo Form::input('qid', FALSE, array('class' => 'qid')); ?><br />
 
 <p>action:</p>
-<?php echo Form::select('action', array('show', 'hide')); ?><br /><br />
+<?php echo Form::select('action', $options); ?><br /><br />
 
 <?php echo Form::submit('submit', 'do it'); ?>
 <?php echo Form::close(); ?>
