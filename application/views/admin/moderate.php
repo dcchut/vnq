@@ -2,7 +2,7 @@
 <?php echo $panel; ?>
 <br /><br />
 <b>quote fiddle panel:</b><br />
-<?php echo Form::open('admin/moderate/'); ?>
+<?php echo Form::open('admin/moderate/', array('class', 'hide')); ?>
 <?php if (isset($message) && !empty($message)): ?>
 <p><?php echo $message; ?></p>
 <?php endif; ?>
