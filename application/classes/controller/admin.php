@@ -38,7 +38,7 @@ class Controller_Admin extends Controller_Site
 
         if (count($unmoderated) == 0)
         {
-            $view_data['panel'] = 'no quotes to moderate';
+            $view_data['panel'] = 'no quotes to accept';
 		}
 		else
 		{
@@ -47,9 +47,6 @@ class Controller_Admin extends Controller_Site
                 $view_data['panel'] .= VNQ::render_quote($quote, TRUE, TRUE);
 			}
         }
-
-
-
 
         // what are the moderation options avaiable
         // possibly put this closer to the model ~_~
