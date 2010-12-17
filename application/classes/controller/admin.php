@@ -29,16 +29,19 @@ class Controller_Admin extends Controller_Site
     public function action_moderate()
     {
         $unmoderated = ORM::factory('quote')->unmoderated();
-        
+
+        // here we build the 'top' half of the moderation section
+        $panel  = '';
+
         if (count($unmoderated) == 0)
         {
-			$this->template->content = 'no quotes to moderate';
+            $panel = 'no quotes to moderate';
 		}
 		else
 		{
 			foreach ($unmoderated as $quote)
 			{
-				$this->template->content  .= VNQ::render_quote($quote, TRUE, TRUE);
+                $panel .= VNQ::render_quote($quote, TRUE, TRUE);
 			}
         }
 
@@ -54,17 +57,22 @@ class Controller_Admin extends Controller_Site
         {
             $quote = ORM::factory('quote', $id);
 
-            if ($action == 'hide')
-                $quote->status = 3;
+            // i'm not going to allow you to moderate a quote in this fashion
+            // unless it's been accepted/denied by a moderator
+            if ($quote->status != 2)
+            {
+                if ($action == 'hide')
+                    $quote->status = 3;
 
-            if ($action == 'show')
-                $quote->status = 1;
+                if ($action == 'show')
+                    $quote->status = 1;
 
-            // save the quote
-            $quote->save();
+                // save the quote
+                $quote->save();
+            }
         }
 
-        $this->template->content .= View::factory('admin/moderate', array('options' => $moderation_options));
+        $this->template->content .= View::factory('admin/moderate', array('panel' => $panel, 'options' => $moderation_options));
     }
 
     /**

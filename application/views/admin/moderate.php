@@ -1,5 +1,7 @@
+<b>quote acceptance panel:</b><br />
+<?php echo $panel; ?>
 <br /><br />
-<b>moderation panel:</b><br />
+<b>quote fiddle panel:</b><br />
 <?php echo Form::open('admin/moderate/'); ?><br />
 
 <p>qid:</p>
