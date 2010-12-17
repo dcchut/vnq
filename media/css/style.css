@@ -35,18 +35,19 @@ textarea {
 	top: 6px;
 }
 
-.mod {
+div.mod {
     width: 300px;
-    height: 20px;
+    padding: 5px;
+    overflow: auto;
 }
-.modl {
+div.modl {
+    float: left;
     width: 100px;
 }
 
-.modr {
+div.modr {
     float: right;
-    margin-left: 15px;
-    width: 200px;
+    width: 100px;
 }
 
 a {
