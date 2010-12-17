@@ -1,16 +1,11 @@
 <br />
 <?php echo Form::open('admin/moderate/'); ?><br />
 
-<div class="mod">
-    <div class="modl">Quote (ID):</div>
-    <div class="modr"><?php echo Form::input('qid'); ?></div>
-</div>
-<br />
+Quote ID:<br />
+<?php echo Form::input('qid'); ?><br /><br />
 
-<div class="mod">
-    <div class="modl">Action:</div>
-    <div class="modr"><?php echo Form::select('action', array('show', 'hide')); ?></div>
-</div>
+Action:<br />
+<?php echo Form::select('action', array('show', 'hide')); ?><br /><br />
 
 <?php echo Form::submit('submit', 'Submit'); ?>
 <?php echo Form::close(); ?>
