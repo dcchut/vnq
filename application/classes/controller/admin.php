@@ -38,7 +38,7 @@ class Controller_Admin extends Controller_Site
 
         if (count($unmoderated) == 0)
         {
-            $view_data['panel'] = 'no quotes to accept<br />';
+            $view_data['panel'] = 'no quotes to accept<br /><br />';
 		}
 		else
         {
