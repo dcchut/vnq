@@ -35,6 +35,15 @@ textarea {
 	top: 6px;
 }
 
+.modl {
+    /* nothing here*/
+}
+
+.modr {
+    float: right;
+    margin-left: 15px;
+}
+
 a {
 	text-decoration:none;
 }
