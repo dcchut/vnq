@@ -59,7 +59,7 @@ class Controller_Admin extends Controller_Site
         $id     = (int)Arr::get($_POST, 'id', 0);
         $action = Arr::get($_POST, 'action', FALSE);
 
-        if ($id > 0 && $action !== FALSE && Model_Quote::exists($id) && in_array($action, $moderation_options))
+        if ($id > 0 && $action !== FALSE && Model_Quote::exists($id) && in_array($action, $view_data['options']))
         {
             $quote = ORM::factory('quote', $id);
 
