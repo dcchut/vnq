@@ -131,6 +131,7 @@ class Model_Quote extends ORM
         return $this->reset()->select('*')->from('quotes')->where('quote', 'like', '%ninwa')
                                                           ->or_where('quote', 'like', '%ninja%')
                                                           ->or_where('quote', 'like', '%nina%')
-                                                          ->order_by('up', 'DESC');
+                                                          ->order_by('up', 'DESC')
+                                                          ->find_all();
     }
 }
