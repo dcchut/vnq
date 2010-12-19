@@ -119,15 +119,6 @@ class Model_Quote extends ORM
 
     public function ninwa()
     {
-        /*
-         * 	protected static $_db_methods = array
-	(
-		'where', 'and_where', 'or_where', 'where_open', 'and_where_open', 'or_where_open', 'where_close',
-		'and_where_close', 'or_where_close', 'distinct', 'select', 'from', 'join', 'on', 'group_by',
-		'having', 'and_having', 'or_having', 'having_open', 'and_having_open', 'or_having_open',
-		'having_close', 'and_having_close', 'or_having_close', 'order_by', 'limit', 'offset', 'cached'
-	);
-         */
         return $this->reset()->select('*')->from('quotes')->where('quote', 'like', '%ninwa%')
                                                           ->or_where('quote', 'like', '%ninja%')
                                                           ->or_where('quote', 'like', '%nina%')
