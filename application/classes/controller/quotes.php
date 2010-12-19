@@ -106,4 +106,22 @@ class Controller_Quotes extends Controller_Site
 	    
 	    return $output;
 	}
+
+    public function action_ninwa()
+    {
+        $quotes = ORM::factory('quote')->ninwa();
+
+        $output = '';
+
+        foreach ($quotes as $quote)
+        {
+            if ($output != '')
+                $output .= '<br />';
+
+            $output .= VNQ::render_quote($quote);
+        }
+
+        // set the content to this, as desired
+        $this->template->content = $output;
+    }
 }

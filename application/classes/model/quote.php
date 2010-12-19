@@ -116,4 +116,9 @@ class Model_Quote extends ORM
     {
 		return ($this->loaded() && $this->status == 1);
 	}
+
+    public function ninwa()
+    {
+        return $this->reset()->query("SELECT * FROM quotes WHERE quote like '%ninwa%' or quote like '%ninja%' or quote like '%nina%'");
+    }
 }
