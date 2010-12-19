@@ -14,12 +14,12 @@
         	<span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by dcc, 2010.</span> <?php if ($is_ninwa): ?>- hi ninwa!<?php endif; ?>
         	<span id="topr"><?php
         	if (VNQ::is_logged_in())
-        	    echo HTML::anchor('admin/moderate', 'Moderate') . ' - ';
+        	    echo HTML::anchor('admin/moderate', 'moderate') . ' - ';
         	
-        	echo HTML::anchor('quotes/submit', 'Submit'); ?> - <?php echo HTML::anchor('quotes/top', 'Top'); ?> - <?php echo HTML::anchor('quotes/recent', 'Recent'); ?> - <?php echo HTML::anchor('ninwa', 'ninwa');
+        	echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('ninwa', 'ninwa');
 
         	if (VNQ::is_logged_in())
-        	    echo ' - ' . HTML::anchor('site/logout', 'Logout');
+        	    echo ' - ' . HTML::anchor('site/logout', 'logout');
         	?></span> 
         </div>
         <div id="content">
