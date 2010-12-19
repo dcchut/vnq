@@ -88,12 +88,19 @@ Route::set('required', '<id>')
         'controller' => 'quotes',
         'action'     => 'view',
     ));
-    
+
+Route::set('ninwa', 'ninwa')
+    ->defaults(array(
+        'controller' => 'quotes',
+        'action'     => 'ninwa',
+    ));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'quotes',
 		'action'     => 'recent',
 	));
+
 
 
     
