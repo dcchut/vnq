@@ -128,7 +128,7 @@ class Model_Quote extends ORM
 		'having_close', 'and_having_close', 'or_having_close', 'order_by', 'limit', 'offset', 'cached'
 	);
          */
-        return $this->reset()->select('*')->from('quotes')->where('quote', 'like', '%ninwa')
+        return $this->reset()->select('*')->from('quotes')->where('quote', 'like', '%ninwa%')
                                                           ->or_where('quote', 'like', '%ninja%')
                                                           ->or_where('quote', 'like', '%nina%')
                                                           ->order_by('up', 'DESC')
