@@ -16,7 +16,7 @@
         	if (VNQ::is_logged_in())
         	    echo HTML::anchor('admin/moderate', 'moderate') . ' - ';
         	
-        	echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('ninwa', 'ninwa');
+        	echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('quotes/ninwa', 'ninwa');
 
         	if (VNQ::is_logged_in())
         	    echo ' - ' . HTML::anchor('site/logout', 'logout');
