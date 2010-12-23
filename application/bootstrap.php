@@ -102,7 +102,23 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
  * If no source is specified, the URI will be automatically detected.
  */
-echo Request::instance()
-	->execute()
-	->send_headers()
-	->response;
+
+$request = Request::instance();
+
+try
+{
+    $request->execute();
+}
+catch (ReflectionException $e)
+{
+    // make our new request
+    $new_request = Request::factory('site/404');
+    $new_request->execute();
+    $new_request->status = 404;
+
+    if ($new_request->send_headers())
+            die($new_request->response);
+}
+
+if ($request->send_headers()->response)
+     echo $request->response;
