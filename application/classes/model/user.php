@@ -24,7 +24,7 @@ class Model_User extends ORM
 
     public static function add_user($username, $password)
     {
-        if (self::username_exists($usernamer))
+        if (self::username_exists($username))
             return FALSE;
 
         $user = ORM::factory('user');
