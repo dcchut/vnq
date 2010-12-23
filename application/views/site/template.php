@@ -20,6 +20,9 @@
 
         	if (VNQ::is_logged_in())
         	    echo ' - ' . HTML::anchor('site/logout', 'logout');
+            else
+                echo ' - ' . HTML::anchor('site/login', 'login');
+            
         	?></span> 
         </div>
         <div id="content">
