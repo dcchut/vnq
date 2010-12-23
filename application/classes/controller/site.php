@@ -77,4 +77,13 @@ class Controller_Site extends Controller_Template
         $this->auto_render       = FALSE;
         $this->request->response = View::factory('site/vnqjs');
     }
+
+    /**
+     * file not fond
+     */
+    public function action_404()
+    {
+        $this->template->subtitle = '404 error';
+        $this->template->contect  = 'the page you were looking for could not be found.<br />';
+    }
 }
