@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="header">
-        	<span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by dcc, 2010.</span> <?php if ($is_ninwa): ?>- hi ninwa!<?php endif; ?>
+        	<span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by dcc, 2010.</span>
         	<span id="topr"><?php
         	if (VNQ::is_logged_in())
         	    echo HTML::anchor('admin/moderate', 'moderate') . ' - ';
