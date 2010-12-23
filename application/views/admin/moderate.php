@@ -18,10 +18,9 @@
 <b>mod list:</b><br /><br />
 <?php foreach($moderators as $moderator): ?>
 <?php echo $moderator->username; ?><br />
-<?php endforeach; ?>
+<?php endforeach; ?><br />
 
 <p class="np">new mod:</p>
 <?php echo Form::open('admin/new_mod'); ?>
-<?php echo Form::input('username', FALSE); ?><br />
-<?php echo Form::password('password', FALSE); ?><br />
+username: <?php echo Form::input('username', FALSE); ?> password: <?php echo Form::password('password', FALSE); ?><br />
 <?php echo Form::close(); ?>
