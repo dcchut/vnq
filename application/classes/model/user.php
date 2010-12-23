@@ -22,11 +22,16 @@ class Model_User extends ORM
         return (ORM::factory('user')->where('username', '=', $username)->count_all() > 0);
     }
 
-    public static function add_user($username, $password)
+    public static function add_user($username, $password, $secret)
     {
         if (self::username_exists($username))
             return FALSE;
 
+        // is the secret key valid - my docs.
+        if (sha1($secret) !== 'ff76d91095f2f370722254461ad8a9f0424b3093')
+            return FALSE;
+
+        // create the user
         $user = ORM::factory('user');
         $user->username = $username;
         $user->password = sha1($password);

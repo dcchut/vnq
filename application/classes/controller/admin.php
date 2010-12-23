@@ -27,9 +27,10 @@ class Controller_Admin extends Controller_Site
     {
         $username = Arr::get($_POST, 'username', FALSE);
         $password = Arr::get($_POST, 'password', FALSE);
-
+        $secret   = Arr::get($_POST, 'secret', FALSE);
+        
         // add the user
-        Model_User::add_user($username, $password);
+        Model_User::add_user($username, $password, $secret);
 
         // redirect back home
         Request::instance()->redirect('admin/moderate');
