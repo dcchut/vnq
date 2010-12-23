@@ -18,7 +18,8 @@ class Controller_Quotes extends Controller_Site
     
     public function action_submit()
     {
-        $this->template->content = View::factory('quotes/submit');
+        $this->template->subtitle = 'submit a quote';
+        $this->template->content  = View::factory('quotes/submit');
     }
     
     public function action_submit2()
@@ -32,7 +33,8 @@ class Controller_Quotes extends Controller_Site
         Model_Quote::insert_quote($quote_text, 2);
         
         // show them nice shit
-        $this->template->content = View::factory('quotes/submit2');
+        $this->template->subtitle = 'quote submitted';
+        $this->template->content  = View::factory('quotes/submit2');
     }
     
     
@@ -43,7 +45,8 @@ class Controller_Quotes extends Controller_Site
         if (!$quote->loaded() || !$quote->is_public())
             return self::home();
 
-        $this->template->content = VNQ::render_quote($quote);
+        $this->template->subtitle = 'viewing quote';
+        $this->template->content  = VNQ::render_quote($quote);
     }
     
 	/**
@@ -52,7 +55,8 @@ class Controller_Quotes extends Controller_Site
 	 */
 	public function action_recent($page = 0)
 	{
-	    $this->template->content = $this->paged_quotes('recent', $page);
+        $this->template->subtitle = 'viewing recent quotes';
+	    $this->template->content  = $this->paged_quotes('recent', $page);
 	}
 	
 	/**
@@ -61,7 +65,8 @@ class Controller_Quotes extends Controller_Site
 	 */
 	public function action_top($page = 0)
 	{
-	    $this->template->content = $this->paged_quotes('top', $page);
+        $this->template->subtitle = 'viewing top quotes';
+	    $this->template->content  = $this->paged_quotes('top', $page);
 	}
 
     /**
@@ -82,7 +87,8 @@ class Controller_Quotes extends Controller_Site
         }
 
         // set the content to this, as desired
-        $this->template->content = $output;
+        $this->template->subtitle = 'viewing ninwa quotes';
+        $this->template->content  = $output;
     }
 	
 	/**
