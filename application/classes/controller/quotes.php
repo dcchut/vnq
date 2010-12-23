@@ -45,7 +45,7 @@ class Controller_Quotes extends Controller_Site
         if (!$quote->loaded() || !$quote->is_public())
             return self::home();
 
-        $this->template->subtitle = 'viewing quote';
+        $this->template->subtitle = 'single quote';
         $this->template->content  = VNQ::render_quote($quote);
     }
     
@@ -55,7 +55,7 @@ class Controller_Quotes extends Controller_Site
 	 */
 	public function action_recent($page = 0)
 	{
-        $this->template->subtitle = 'viewing recent quotes';
+        $this->template->subtitle = 'recent quotes';
 	    $this->template->content  = $this->paged_quotes('recent', $page);
 	}
 	
@@ -65,7 +65,7 @@ class Controller_Quotes extends Controller_Site
 	 */
 	public function action_top($page = 0)
 	{
-        $this->template->subtitle = 'viewing top quotes';
+        $this->template->subtitle = 'top quotes';
 	    $this->template->content  = $this->paged_quotes('top', $page);
 	}
 
