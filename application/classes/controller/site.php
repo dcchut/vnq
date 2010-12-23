@@ -49,30 +49,34 @@ class Controller_Site extends Controller_Template
     
     public function action_login2()
     {
-        $username = Arr::get($_POST, 'username', FALSE);
-        $password = sha1(Arr::get($_POST, 'password', FALSE));
-        
-        $user = ORM::factory('user')->where('username', '=', $username)
-                                     ->where('password', '=', $password)
-                                     ->find_all();
-                                                 
+        // try to get the user record for this person
+        $user = Model_User::get_user(Arr::get($_POST, 'username', FALSE),
+                                     Arr::get($_POST, 'password', FALSE));
+
         // pee off, peon
-        if (count($user) == 0)
+        if (!$user)
             Request::instance()->redirect('site/login');
             
         VNQ::login();
         self::home();
     }
-    
+
+    /**
+     * Logout of a current session
+     */
     public function action_logout()
     {
         VNQ::logout();
         self::home();
     }
-    
+
+    /**
+     * Here we show the javascript (dynamically generated)
+     * required to operate VNQ
+     */
     public function action_vnqjs()
     {
-        $this->auto_render = FALSE;
+        $this->auto_render       = FALSE;
         $this->request->response = View::factory('site/vnqjs');
     }
 }

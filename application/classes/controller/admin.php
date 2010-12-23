@@ -82,6 +82,10 @@ class Controller_Admin extends Controller_Site
             }
         }
 
+        // include the moderator list
+        $view_data['moderators'] = ORM::factory('user')->find_all();
+
+        // show it
         $this->template->content .= View::factory('admin/moderate', $view_data);
     }
 
