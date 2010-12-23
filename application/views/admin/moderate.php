@@ -22,8 +22,11 @@
 
 <b>add mod:</b><br /><br />
 <?php echo Form::open('admin/new_mod/'); ?>
-username: <?php echo Form::input('username', FALSE); ?><br /><br />
-password: <?php echo Form::password('password', FALSE); ?><br /><br />
-secret: <?php echo Form::password('secret', FALSE); ?><br /><br />
+<p class="np">username:</p>
+<?php echo Form::input('username', FALSE); ?><br /><br />
+<p class="np">password:</p>
+<?php echo Form::password('password', FALSE); ?><br /><br />
+<p class="np">secret:</p>
+<?php echo Form::password('secret', FALSE); ?><br /><br />
 <?php echo Form::submit('submit', 'do it'); ?>
 <?php echo Form::close(); ?>
