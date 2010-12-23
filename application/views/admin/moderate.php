@@ -21,7 +21,7 @@
 <?php endforeach; ?><br />
 
 <b>add mod:</b><br /><br />
-<?php echo Form::open('admin/new_mod'); ?>
+<?php echo Form::open('admin/new_mod/'); ?>
 username: <?php echo Form::input('username', FALSE); ?><br /><br />
 password: <?php echo Form::password('password', FALSE); ?><br /><br />
 <?php echo Form::submit('submit', 'do it'); ?>

@@ -22,6 +22,18 @@ class Controller_Admin extends Controller_Site
         
         $this->request->response = View::factory('admin/jscript');
     }
+
+    public function action_new_mod()
+    {
+        $username = Arr::get($_POST, 'username', FALSE);
+        $password = Arr::get($_POST, 'password', FALSE);
+
+        // add the user
+        Model_User::add_user($username, $password);
+
+        // redirect back home
+        Request::instance()->redirect('admin/moderate');
+    }
     
     /**
      *  Show the quotes that need to be moderated
