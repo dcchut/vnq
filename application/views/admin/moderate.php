@@ -12,4 +12,8 @@
 <?php echo Form::select('action', $options); ?><br /><br />
 
 <?php echo Form::submit('submit', 'do it'); ?>
-<?php echo Form::close(); ?>
+<?php echo Form::close(); ?><br />
+<b>moderator list:</b><br /><br />
+<?php foreach($moderators as $moderator): ?>
+<?php echo $moderator->username; ?><br />
+<?php endforeach; ?>

@@ -117,6 +117,10 @@ class Model_Quote extends ORM
 		return ($this->loaded() && $this->status == 1);
 	}
 
+    /**
+     * Get all the quotes relating to ninwa
+     * @return Model_Quote
+     */
     public function ninwa()
     {
         return $this->reset()->select('*')->from('quotes')->where('quote', 'like', '%ninwa%')
