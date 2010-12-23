@@ -20,7 +20,7 @@
 <?php echo $moderator->username; ?><br />
 <?php endforeach; ?><br />
 
-<p class="np">add mod:</p>
+<b>add mod:</b><br /><br />
 <?php echo Form::open('admin/new_mod'); ?>
 username: <?php echo Form::input('username', FALSE); ?><br /><br />
 password: <?php echo Form::password('password', FALSE); ?><br /><br />
