@@ -26,7 +26,7 @@
 <?php echo Form::input('username', FALSE); ?><br /><br />
 <p class="np">password:</p>
 <?php echo Form::password('password', FALSE); ?><br /><br />
-<p class="np">secret:</p>
+<p class="np">secret key:</p>
 <?php echo Form::password('secret', FALSE); ?><br /><br />
 <?php echo Form::submit('submit', 'do it'); ?>
 <?php echo Form::close(); ?>
