@@ -27,7 +27,7 @@ class Model_User extends ORM
         if (self::username_exists($username))
             return FALSE;
 
-        // is the secret key valid - my docs.
+        // is the secret key valid
         if (sha1($secret) !== 'ff76d91095f2f370722254461ad8a9f0424b3093')
             return FALSE;
 
