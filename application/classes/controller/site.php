@@ -84,6 +84,6 @@ class Controller_Site extends Controller_Template
     public function action_404()
     {
         $this->template->subtitle = '404 error';
-        $this->template->contect  = 'the page you were looking for could not be found.<br />';
+        $this->template->content  = 'the page you were looking for could not be found.<br />';
     }
 }
