@@ -1,7 +1,7 @@
 <b>quote acceptance panel:</b><br /><br />
 <span id="qhead"><?php echo $panel; ?></span>
 <b>quote fiddle panel:</b><br /><br />
-<?php echo Form::open('admin/moderate/', array('class', 'hide')); ?>
+<?php echo Form::open('admin/moderate/'); ?>
 <?php if (isset($message) && !empty($message)): ?>
 <p class="np"><?php echo $message; ?></p><br />
 <?php endif; ?>
@@ -13,7 +13,15 @@
 
 <?php echo Form::submit('submit', 'do it'); ?>
 <?php echo Form::close(); ?><br />
-<b>moderator list:</b><br /><br />
+
+<!-- moderator list -->
+<b>mod list:</b><br /><br />
 <?php foreach($moderators as $moderator): ?>
 <?php echo $moderator->username; ?><br />
 <?php endforeach; ?>
+
+<p class="np">new mod:</p>
+<?php echo Form::open('admin/new_mod'); ?>
+<?php echo Form::input('username', FALSE); ?><br />
+<?php echo Form::password('password', FALSE); ?><br />
+<?php echo Form::close(); ?>
