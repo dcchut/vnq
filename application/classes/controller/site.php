@@ -43,8 +43,9 @@ class Controller_Site extends Controller_Template
     {
         if (VNQ::is_logged_in())
             self::home();
-            
-        $this->template->content = View::factory('site/login');
+
+        $this->template->subtitle = 'login';
+        $this->template->content  = View::factory('site/login');
     }
     
     public function action_login2()
