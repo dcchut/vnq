@@ -26,6 +26,9 @@
         	?></span> 
         </div>
         <div id="content">
+          <?php if (!empty($subtitle)): ?>
+            <b><?php echo $subtitle; ?></b><br /><br />
+          <?php endif; ?>
           <?php echo $content ?>
           	<br />
         </div>
