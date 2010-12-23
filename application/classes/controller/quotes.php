@@ -87,7 +87,7 @@ class Controller_Quotes extends Controller_Site
         }
 
         // set the content to this, as desired
-        $this->template->subtitle = 'viewing ninwa quotes';
+        $this->template->subtitle = 'ninwa quotes';
         $this->template->content  = $output;
     }
 	
