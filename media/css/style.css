@@ -19,8 +19,8 @@ textarea {
 	padding-top: 10px;
 	background-color: #D8CCFF;
 	border: 1px solid #000000;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 #content {
@@ -28,8 +28,8 @@ textarea {
 	padding: 13px;
 	background-color: #D8CCFF;
 	border: 1px solid #000000;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 #topr {
