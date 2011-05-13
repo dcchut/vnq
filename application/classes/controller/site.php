@@ -22,8 +22,12 @@ class Controller_Site extends Controller_Template
   	    	$this->template->styles = array();
   		    $this->template->scripts = array();
   		    
-  		    // this might work
-  		    $this->template->unmoderated_quotes = count(ORM::factory('quote')->unmoderated());
+  		    // only need to count these if we are logged in as an admin
+            if (VNQ::is_logged_in()) {
+                $this->template->unmoderated_quotes = count(ORM::factory('quote')->unmoderated());
+  		    } else {
+                $this->template->unmoderated_quotes = 0;
+            }
         }
     }
     
