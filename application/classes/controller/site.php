@@ -21,6 +21,9 @@ class Controller_Site extends Controller_Template
   			
   	    	$this->template->styles = array();
   		    $this->template->scripts = array();
+  		    
+  		    // this might work
+  		    $this->template->unmoderated_quotes = count(ORM::factory('quote')->unmoderated());
         }
     }
     
