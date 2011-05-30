@@ -124,9 +124,11 @@ class Model_Quote extends ORM
     public function ninwa()
     {
         return $this->reset()->select('*')->from('quotes')->where('status', '=', 1)
-                                                          ->and_where('quote', 'like', '%ninwa%')
+                                                          ->and_where_open()
+                                                          ->where('quote', 'like', '%ninwa%')
                                                           ->or_where('quote', 'like', '%ninja%')
                                                           ->or_where('quote', 'like', '%nina%')
+                                                          ->and_where_close()
                                                           ->order_by('up', 'DESC')
                                                           ->find_all();
     }
