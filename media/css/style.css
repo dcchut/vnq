@@ -1,8 +1,8 @@
 body, input {
-  background-color: #e5f9ff;
+  background-color: #FFFFFF;
   /*font: 11pt monospace;*/
   font-family: 'Inconsolata', cursive;
-  margin: 5px; }
+}
 
 input {
   padding: 3px; }
@@ -11,20 +11,36 @@ textarea {
   width: 600px;
   height: 150px; }
 
-#header, #content {
+#header, #content, #links {
   margin: 15px;
-  padding: 13px;
-  padding-top: 10px;
-  background-color: #d8ccff;
-  border: 1px solid #000000;
-  -moz-border-radius: 10px;
-  border-radius: 10px; }
+  margin-left: 300px;
+  margin-right: 300px;
+  width: auto;
+  padding-left: 5px;
+}
 
-#topr {
-  float: right;
-  margin-right: 13px;
-  position: relative;
-  top: 6px; }
+#header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+    background-color: #FFCC33;
+}
+
+#content {
+    padding-right: 50px;
+}
+
+#links {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #E0E0E0;
+}
+
+.quotehead {
+    background-color: #CCFF33;
+}
 
 a {
   text-decoration: none; }
