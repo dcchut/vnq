@@ -13,7 +13,8 @@
     <body>
         <div id="header">
         	<span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by <a href="http://dcc.nitrated.net/">dcchut</a>, 2010.</span>
-        	<span id="topr"><?php
+        </div>
+        <div id="links"><?php
         	if (VNQ::is_logged_in())
         	    echo HTML::anchor('admin/moderate', 'moderate') . ' (' . $unmoderated_quotes . ') - ';
         	
