@@ -1,6 +1,7 @@
 body, input {
   background-color: #e5f9ff;
-  font: 11pt monospace;
+  /*font: 11pt monospace;*/
+  font-family: 'Anonymous Pro', sans-serif;
   margin: 5px; }
 
 input {
@@ -40,7 +41,9 @@ a:visited {
 
 a.black {
   text-decoration: none;
-  color: #000000; }
+  color: #000000;
+  font-family: 'Kameron', serif;
+  }
 
 .quote {
   margin: 0px; }

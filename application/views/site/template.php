@@ -4,6 +4,7 @@
     <head profile="http://gmpg.org/xfn/11">
       <title><?php echo $title ?></title>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Anonymous+Pro:400,700&v2' rel='stylesheet' type='text/css'>
       <?php echo HTML::script('media/jquery.js') ?>
       <?php echo HTML::script('site/vnqjs') ?>
       <?php foreach ($styles as $file) echo HTML::style($file), "\n" ?>
