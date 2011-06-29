@@ -11,28 +11,30 @@
       <?php foreach ($scripts as $file) echo HTML::script($file), "\n" ?>
     </head>
     <body>
-        <div id="header">
-        	<span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by <a href="http://dcc.nitrated.net/">dcchut</a>, 2010.</span>
-        </div>
-        <div id="links"><?php
-        	if (VNQ::is_logged_in())
-        	    echo HTML::anchor('admin/moderate', 'moderate') . ' (' . $unmoderated_quotes . ') - ';
-        	
-        	echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('quotes/ninwa', 'ninwa');
+        <div id="container">
+            <div id="header">
+                <span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by <a href="http://dcc.nitrated.net/">dcchut</a>, 2010.</span>
+            </div>
+            <div id="links"><?php
+                if (VNQ::is_logged_in())
+                    echo HTML::anchor('admin/moderate', 'moderate') . ' (' . $unmoderated_quotes . ') - ';
+                
+                echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('quotes/ninwa', 'ninwa');
 
-        	if (VNQ::is_logged_in())
-        	    echo ' - ' . HTML::anchor('site/logout', 'logout');
-            else
-                echo ' - ' . HTML::anchor('site/login', 'login');
-            
-        	?></span> 
-        </div>
-        <div id="content">
-          <?php if (!empty($subtitle)): ?>
-            <b><?php echo $subtitle; ?></b><br /><br />
-          <?php endif; ?>
-          <?php echo $content ?>
-          	<br />
+                if (VNQ::is_logged_in())
+                    echo ' - ' . HTML::anchor('site/logout', 'logout');
+                else
+                    echo ' - ' . HTML::anchor('site/login', 'login');
+                
+                ?></span> 
+            </div>
+            <div id="content">
+              <?php if (!empty($subtitle)): ?>
+                <b><?php echo $subtitle; ?></b><br /><br />
+              <?php endif; ?>
+              <?php echo $content ?>
+                <br />
+            </div>
         </div>
     </body>
 </html>
