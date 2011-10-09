@@ -91,6 +91,28 @@ class Controller_Quotes extends Controller_Site
         $this->template->content  = $output;
     }
 	
+    /**
+     * Get all comments relating to cthulhu
+     */
+    public function action_cthulhu()
+    {
+        $quotes = ORM::factory('quote')->cthulhu();
+
+        $output = '';
+
+        foreach ($quotes as $quote)
+        {
+            if ($output != '')
+                $output .= '<br />';
+
+            $output .= VNQ::render_quote($quote);
+        }
+
+        // set the content to this, as desired
+        $this->template->subtitle = 'cthulhu quotes';
+        $this->template->content  = $output;
+    }
+    
 	/**
 	 * Show a listing of quotes
 	 * @param ORM $quotes

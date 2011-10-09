@@ -19,7 +19,7 @@
                 if (VNQ::is_logged_in())
                     echo HTML::anchor('admin/moderate', 'moderate') . ' (' . $unmoderated_quotes . ') - ';
                 
-                echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('quotes/ninwa', 'ninwa');
+                echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent'); ?> - <?php echo HTML::anchor('quotes/ninwa', 'ninwa'); ?> - <?php echo HTML::anchor('quotes/cthulhu', 'cthulhu');
 
                 if (VNQ::is_logged_in())
                     echo ' - ' . HTML::anchor('site/logout', 'logout');
