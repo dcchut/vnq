@@ -113,6 +113,28 @@ class Controller_Quotes extends Controller_Site
         $this->template->content  = $output;
     }
     
+    /**
+     * Get all comments relating to username
+     */
+    public function action_cthulhu()
+    {
+        $quotes = ORM::factory('quote')->username();
+
+        $output = '';
+
+        foreach ($quotes as $quote)
+        {
+            if ($output != '')
+                $output .= '<br />';
+
+            $output .= VNQ::render_quote($quote);
+        }
+
+        // set the content to this, as desired
+        $this->template->subtitle = 'username quotes';
+        $this->template->content  = $output;
+    }
+    
 	/**
 	 * Show a listing of quotes
 	 * @param ORM $quotes
