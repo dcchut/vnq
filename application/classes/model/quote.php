@@ -144,4 +144,16 @@ class Model_Quote extends ORM
                                                           ->order_by('up', 'DESC')
                                                           ->find_all();
     }
+    
+    /**
+     * Get all the quotes relating to username
+     * @return Model_Quote
+     */
+    public function username()
+    {
+        return $this->reset()->select('*')->from('quotes')->where('status', '=', 1)
+                                                          ->where('quote', 'like', '%username%')
+                                                          ->order_by('up', 'DESC')
+                                                          ->find_all();
+    }
 }
