@@ -116,7 +116,7 @@ class Controller_Quotes extends Controller_Site
     /**
      * Get all comments relating to username
      */
-    public function action_cthulhu()
+    public function action_username()
     {
         $quotes = ORM::factory('quote')->username();
 
