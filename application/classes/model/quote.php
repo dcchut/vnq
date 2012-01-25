@@ -66,7 +66,7 @@ class Model_Quote extends ORM
         return $this->reset()->where('status', '=', 1)
                              ->and_where_open()
                              ->where('up','>',0)
-                             ->or_where(DB::expr('date - ' . time()),'<',60*60*24*7)
+                             ->or_where(DB::expr(time() . ' - date'),'<',60*60*24*7)
                              ->and_where_close()
                              ->order_by('id', 'DESC')
                              ->find_all();
