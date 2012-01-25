@@ -63,12 +63,13 @@ class Model_Quote extends ORM
      */
     public function recent($limit, $offset)
     {
-        return $this->reset()
-                    ->where('status', '=', 1)
-                    ->limit((int)$limit)
-                    ->offset((int)$offset)
-                    ->order_by('id', 'DESC')
-                    ->find_all();
+        return $this->reset()->where('status', '=', 1)
+                             ->and_where_open()
+                             ->where('up','>',0)
+                             ->or_where(DB::expr('date - ' . time()),'<',60*60*24*7)
+                             ->and_where_close()
+                             ->order_by('id', 'DESC')
+                             ->find_all();
     }
     
     /**
@@ -81,7 +82,7 @@ class Model_Quote extends ORM
                     ->where('status', '=', 1)
                     ->limit((int)$limit)
                     ->offset((int)$offset)
-                    ->order_by(DB::expr('up'), 'DESC')
+                    ->order_by('up', 'DESC')
                     ->find_all();
     }
 
