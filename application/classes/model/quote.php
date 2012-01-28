@@ -50,6 +50,7 @@ class Model_Quote extends ORM
             $quote->status = $status;
             $quote->up     = 0;
             $quote->down   = 0;
+            $quote->ip     = Request::$client_ip;
             
             return $quote->save();
         }
