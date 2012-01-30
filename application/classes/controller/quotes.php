@@ -62,6 +62,8 @@ class Controller_Quotes extends Controller_Site
             $valid = true;
             
             $this->template->content .= VNQ::render_quote($quote);
+        }
+        
         if (!$valid) {
             return self::home();
         }
