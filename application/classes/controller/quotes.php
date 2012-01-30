@@ -59,6 +59,9 @@ class Controller_Quotes extends Controller_Site
             if (!$quote->loaded() || !$quote->is_public())
                 continue;
                 
+            if ($valid)
+                $this->template->content .= '<br />';
+                
             $valid = true;
             
             $this->template->content .= VNQ::render_quote($quote);
