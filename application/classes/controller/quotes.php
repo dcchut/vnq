@@ -49,6 +49,25 @@ class Controller_Quotes extends Controller_Site
         $this->template->content  = VNQ::render_quote($quote);
     }
     
+    public function action_viewmultiple($ids) {
+        $valid = false;
+        foreach (explode(",", $ids) as $qid) {
+            $qid = (int)$qid;
+            
+            $quote = ORM::factory('quote', (int)$qid);
+            
+            if (!$quote->loaded() || !$quote->is_public())
+                continue;
+                
+            $valid = true;
+            
+            $this->template->content .= VNQ::render_quote($quote);
+        if (!$valid) {
+            return self::home();
+        }
+        $this->template->subtitle = 'multiple quotes';
+    }
+    
 	/**
 	 * 	Show a listing of most recent quotes
 	 *  @param integer $page

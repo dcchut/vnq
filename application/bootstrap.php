@@ -88,12 +88,23 @@ Route::set('required', '<id>')
         'controller' => 'quotes',
         'action'     => 'view',
     ));
+    
+Route::set('required','<ids>',
+    array(
+        'ids' => '[0-9]+(,[0-9]+)?'
+    ))
+    ->defaults(array(
+        'controller' => 'quotes',
+        'action'     => 'viewmultiple',
+    ));
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'quotes',
 		'action'     => 'recent',
 	));
+
+
 
 /**
  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
