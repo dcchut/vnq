@@ -51,9 +51,8 @@ class Controller_Quotes extends Controller_Site
     
     public function action_viewmultiple($ids) {
         $valid = false;
+        
         foreach (explode(",", $ids) as $qid) {
-            $qid = (int)$qid;
-            
             $quote = ORM::factory('quote', (int)$qid);
             
             if (!$quote->loaded() || !$quote->is_public())
@@ -73,25 +72,25 @@ class Controller_Quotes extends Controller_Site
         $this->template->subtitle = 'multiple quotes';
     }
     
-	/**
-	 * 	Show a listing of most recent quotes
-	 *  @param integer $page
-	 */
-	public function action_recent($page = 0)
-	{
+    /**
+    * Show a listing of most recent quotes
+    *  @param integer $page
+    */
+    public function action_recent($page = 0)
+    {
         $this->template->subtitle = 'recent quotes';
-	    $this->template->content  = $this->paged_quotes('recent', $page);
-	}
-	
-	/**
-	 * Show the top-ranked quotes
-	 * @param integer $page
-	 */
-	public function action_top($page = 0)
-	{
+        $this->template->content  = $this->paged_quotes('recent', $page);
+    }
+    
+    /**
+    * Show the top-ranked quotes
+    * @param integer $page
+    */
+    public function action_top($page = 0)
+    {
         $this->template->subtitle = 'top quotes';
-	    $this->template->content  = $this->paged_quotes('top', $page);
-	}
+        $this->template->content  = $this->paged_quotes('top', $page);
+    }
 
     /**
      * Get all comments relating to ninwa
@@ -114,7 +113,7 @@ class Controller_Quotes extends Controller_Site
         $this->template->subtitle = 'ninwa quotes';
         $this->template->content  = $output;
     }
-	
+
     /**
      * Get all comments relating to cthulhu
      */
@@ -159,44 +158,44 @@ class Controller_Quotes extends Controller_Site
         $this->template->content  = $output;
     }
     
-	/**
-	 * Show a listing of quotes
-	 * @param ORM $quotes
-	 * @param integer $page
-	 */
-	protected function paged_quotes($method, $page)
-	{	    
-	    // get a positive integer
-	    $page = (int)$page;
-	    
-	    if ($page < 0)
-	        $page = 0;
-	        
-	    // only have $this->_quotes_per_page quotes per page, therefore
-	    $offset = $this->_quotes_per_page * $page;
-	    
-	    // get our quotes object
-	    $quotes = ORM::factory('quote')->$method($this->_quotes_per_page, $offset);
-	    
-	    // run away if we didn't find anything
-	    if (count($quotes) == 0)
-	    {
-	        if ($page > 0)
-	            return $this->show_quotes($method, 0); // show the first page, at least
-	        else 
-	            return 'error: no quotes found';      // we're fucked if we ever get here
-	    }
-	  
-	    $output = '';
-	    
-	    foreach ($quotes as $quote)
-	    {
-	        if ($output != '')
-	            $output .= '<br />';
-	            
-	        $output .= VNQ::render_quote($quote);
-	    }
-	    
-	    return $output;
-	}
+    /**
+     * Show a listing of quotes
+     * @param ORM $quotes
+     * @param integer $page
+     */
+    protected function paged_quotes($method, $page)
+    {
+        // get a positive integer
+        $page = (int)$page;
+        
+        if ($page < 0)
+            $page = 0;
+            
+        // only have $this->_quotes_per_page quotes per page, therefore
+        $offset = $this->_quotes_per_page * $page;
+        
+        // get our quotes object
+        $quotes = ORM::factory('quote')->$method($this->_quotes_per_page, $offset);
+        
+        // run away if we didn't find anything
+        if (count($quotes) == 0)
+        {
+            if ($page > 0)
+                return $this->show_quotes($method, 0); // show the first page, at least
+            else 
+                return 'error: no quotes found';      // we're fucked if we ever get here
+        }
+      
+        $output = '';
+        
+        foreach ($quotes as $quote)
+        {
+            if ($output != '')
+                $output .= '<br />';
+                
+            $output .= VNQ::render_quote($quote);
+        }
+        
+        return $output;
+    }
 }
