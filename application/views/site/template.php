@@ -13,7 +13,7 @@
     <body>
         <div id="container">
             <div id="header">
-                <span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="quote"> by <a href="http://dcc.nitrated.net/">dcchut</a>, 2012.</span>
+                <span class="huge"><a class="black" href="<?php echo URL::site(); ?>">VNQ</a></span><span class="hquote"> by <a href="http://dcc.nitrated.net/">dcchut</a>, 2012.</span>
             </div>
             <div id="links"><?php
                 if (VNQ::is_logged_in())
