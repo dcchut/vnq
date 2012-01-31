@@ -116,8 +116,8 @@ class Model_Quote extends ORM
      */
     public function is_public()
     {
-		return ($this->loaded() && $this->status == 1);
-	}
+        return ($this->loaded() && $this->status == 1);
+    }
 
     /**
      * Get all the quotes relating to ninwa

@@ -49,16 +49,13 @@ class Controller_Admin extends Controller_Site
         // here we build the 'top' half of the moderation section
         $view_data['panel'] = '';
 
-        if (count($unmoderated) == 0)
-        {
+        if (count($unmoderated) == 0) {
             $view_data['panel'] = 'no quotes to accept<br /><br />';
-		}
-		else
-        {
-			foreach ($unmoderated as $quote)
-			{
+        } else {
+            foreach ($unmoderated as $quote)
+            {
                 $view_data['panel'] .= VNQ::render_quote($quote, TRUE, TRUE);
-			}
+            }
         }
 
         // what are the moderation options avaiable
@@ -109,8 +106,8 @@ class Controller_Admin extends Controller_Site
     {
         $id     = (int)Arr::get($_POST, 'id', 0);
         $status = (int)Arr::get($_POST, 'status', 0);
-		$text   = Arr::get($_POST, 't', FALSE);
-		
+        $text   = Arr::get($_POST, 't', FALSE);
+
         // status must be 1, 2, 3
         if (!in_array($status, array(1, 2, 3)) || !Model_Quote::exists($id))
             exit('0');

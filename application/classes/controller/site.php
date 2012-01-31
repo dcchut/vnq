@@ -16,11 +16,11 @@ class Controller_Site extends Controller_Template
         
         if ($this->auto_render)
         {
-  	    	$this->template->title   = 'VNQ';
-  	    	$this->template->content = '';
-  			
-  	    	$this->template->styles = array();
-  		    $this->template->scripts = array();
+            $this->template->title   = 'VNQ';
+            $this->template->content = '';
+
+            $this->template->styles = array();
+            $this->template->scripts = array();
         }
     }
     
@@ -37,7 +37,7 @@ class Controller_Site extends Controller_Template
             // only need to count these if we are logged in as an admin
             if (VNQ::is_logged_in()) {
                 $this->template->unmoderated_quotes = count(ORM::factory('quote')->unmoderated());
-  		    } else {
+            } else {
                 $this->template->unmoderated_quotes = 0;
             }
         }
