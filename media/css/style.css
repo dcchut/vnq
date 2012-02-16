@@ -48,7 +48,7 @@ textarea {
 }
 
 .quote {
-  min-width: 500px;
+	display: block;
 	background-color: #FFFFFF;
 	margin: 0;
 }
