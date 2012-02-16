@@ -48,7 +48,8 @@ textarea {
 }
 
 .quote {
-  margin: 0;
+  background-color: #FFFFFF;
+	margin: 0;
 }
 
 .hquote {
