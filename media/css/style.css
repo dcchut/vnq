@@ -3,7 +3,7 @@ html {
 }
 
 body, input {
-	background-color: #FFB8D4;
+	background-color: #FFFFFF;
 	font-family: 'Inconsolata', cursive;
 }
 
@@ -48,8 +48,6 @@ textarea {
 }
 
 .quote {
-	display: block;
-	background-color: #FFFFFF;
 	margin: 0;
 }
 
