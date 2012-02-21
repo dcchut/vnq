@@ -26,10 +26,8 @@ $(document).ready(function(){
     
     // enter a quote id, load the quote text
     $(".qid").blur(function(){
-        alert($(this).text());
-        alert($(this).val());
-        $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : $(this).text()}, function(data){
-            alert(data);
+        $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : $(this).val()}, function(data){
+            $("#quote").text(data);
         });
     });
 });
