@@ -8,7 +8,7 @@
 <p class="np">qid:</p>
 <?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br /><br />
 
-<p class="np">new text:</p>
+<p class="np">quote text:</p>
 <?php echo Form::textarea('quote', FALSE, array('id' => 'quote')); ?><br /><br />
 
 <p class="np">action:</p>
