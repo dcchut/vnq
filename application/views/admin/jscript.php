@@ -23,6 +23,13 @@ $(document).ready(function(){
         textarea.attr('edit', 1);
         $(this).replaceWith(textarea);
     });
+    
+    // enter a quote id, load the quote text
+    $("#id").blur(function(){
+        $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : $(this).text()}, function(data){
+            alert(data);
+        });
+    });
 });
 
 function post_status(id, status, t){

@@ -121,4 +121,20 @@ class Controller_Admin extends Controller_Site
 
         exit('1');
     }
+    
+    /**
+      * Load the text of a specific quote (AJAX)
+      */
+    public function action_moderate3()
+    {
+        $id = (int)Arr::get($_POST, 'id', 0);
+        
+        if (!Model_Quote::exists($id))
+            exit('');
+            
+        $quote = ORM::factory('quote', $id);
+        
+        echo $quote->quote;
+        exit();
+    }
 }
