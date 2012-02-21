@@ -91,7 +91,7 @@ Route::set('required', '<id>')
     
 Route::set('required','<ids>',
     array(
-        'ids' => '\d+(,\d+)*'
+        'ids' => '\d+,(,\d+)+'
     ))
     ->defaults(array(
         'controller' => 'quotes',
