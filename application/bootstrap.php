@@ -89,9 +89,9 @@ Route::set('required', '<id>')
         'action'     => 'view',
     ));
     
-Route::set('required','<ids>',
+Route::set('multiquotes','<ids>',
     array(
-        'ids' => '\d+,(,\d+)+'
+        'ids' => '\d+,(,\d+)*'
     ))
     ->defaults(array(
         'controller' => 'quotes',
