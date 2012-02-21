@@ -9,7 +9,7 @@
 <?php echo Form::input('id', FALSE, array('class' => 'qid')); ?><br /><br />
 
 <p class="np">new text:</p>
-<?php echo Form::textarea('quote'); ?><br /><br />
+<?php echo Form::textarea('quote', FALSE, array('id' => 'quote')); ?><br /><br />
 
 <p class="np">action:</p>
 <?php echo Form::select('action', $options); ?><br /><br />
