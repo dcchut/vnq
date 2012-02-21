@@ -70,19 +70,11 @@ class Controller_Admin extends Controller_Site
         {
             $quote = ORM::factory('quote', $id);
 
-            // i'm not going to allow you to moderate a quote in this fashion
-            // unless it's been accepted/denied by a moderator
-            if ($quote->status != 2)
+            // only moderate accepted quotes
+            if ($quote->is_accepted()) 
             {
-                if ($action == 'hide')
-                    $quote->status = 3;
-
-                if ($action == 'show')
-                    $quote->status = 1;
-
-                // save the quote
-                $quote->save();
-
+                $quote->{$action}();
+                
                 // set a message
                 $view_data['message'] = 'fiddle successful (' . $id . ', ' . $action . ')';
             }

@@ -59,6 +59,40 @@ class Model_Quote extends ORM
     }
     
     /**
+     * Hide this quote
+     */
+    public function hide()
+    {
+        // don't moderate unaccepted quotes
+        if ($this->is_accepted())
+        {
+            $this->status = 3;
+            $this->save();
+        }
+    }
+    
+    /**
+     * Show this quote
+     */
+    public function show()
+    {
+        // don't moderate unaccepted quotes
+        if ($this->is_accepted()) 
+        {
+            $this->status = 1;
+            $this->save();
+        }
+    }
+    
+    /**
+      * Has this quote been accepted?
+      */
+    public function is_accepted(){
+        return ($this->status != 2);
+    }
+     
+    
+    /**
      * Recent quotes
      * @param integer $limit
      */
