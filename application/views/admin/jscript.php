@@ -26,6 +26,7 @@ $(document).ready(function(){
     
     // enter a quote id, load the quote text
     $(".qid").blur(function(){
+        $("#quote").text('');
         $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : $(this).val()}, function(data){
             $("#quote").text(data);
         });
