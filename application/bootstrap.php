@@ -91,7 +91,7 @@ Route::set('required', '<id>')
     
 Route::set('multiquotes','<mqs>',
     array(
-        'mqs' => '\d+,(,\d+)*'
+        'mqs' => '\d+(,\d+)*'
     ))
     ->defaults(array(
         'controller' => 'quotes',
