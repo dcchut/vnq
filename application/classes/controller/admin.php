@@ -60,7 +60,7 @@ class Controller_Admin extends Controller_Site
 
         // what are the moderation options avaiable
         // possibly put this closer to the model ~_~
-        $view_data['options'] = array('hide' => 'hide', 'show' => 'show');
+        $view_data['options'] = array('hide' => 'hide', 'show' => 'show', 'modify' => 'modify text');
 
         // have we moderated anything?
         $id     = (int)Arr::get($_POST, 'id', 0);
@@ -73,7 +73,13 @@ class Controller_Admin extends Controller_Site
             // only moderate accepted quotes
             if ($quote->is_accepted()) 
             {
-                $quote->{$action}();
+                if ($action == 'modify') {
+                    // TODO - push this down to the model
+                    $quote->quote = Arr::get($_POST, 'quote');
+                    $quote->save();
+                } else {
+                    $quote->{$action}();
+                }
                 
                 // set a message
                 $view_data['message'] = 'fiddle successful (' . $id . ', ' . $action . ')';
