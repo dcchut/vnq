@@ -47,6 +47,14 @@ textarea {
     height: 25px;
     clear: both; 
 }
+
+.arow:nth-child(odd) {
+    background-color: #eee;
+}
+.arow:nth-child(even) {
+    background-color: #fff;
+}
+
 .aclr {
     font-size: 0px;
     line-height: 0px;
