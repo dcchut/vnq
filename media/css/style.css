@@ -43,29 +43,25 @@ textarea {
     background-color: #E0E0E0;
 }
 
-.acol_id, .aup_id, .astatus_id {
+.acol {
     background-color: #CCFF33;
-    width: 50px;
     text-align: center;
     float: left;
     margin: 5px;
     margin-left:0px;
+}
+
+.acol_id, .aup_id {
+    width: 50px;
+}
+.astatus_id {
+    width: 150px;
 }
 .adate_id,.aip_id {
-    background-color: #CCFF33;
     width: 200px;
-    text-align: center;
-    float: left;
-    margin: 5px;
-    margin-left:0px;
 }
 .aquote_id {
-    background-color: #CCFF33;
     width: 300px;
-    text-align: center;
-    float: left;
-    margin: 5px;
-    margin-left:0px;
 }
 
 .quotehead {
