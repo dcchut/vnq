@@ -1,3 +1,12 @@
+<div class="container">
+    <span class="aviewid">id</span>
+    <span class="aviewid">date</span>
+    <span class="aviewid">quote</span>
+    <span class="aviewid">up</span>
+    <span class="aviewid">status</span>
+    <span class="aviewid">ip</span>
+</div>
+
 <table>
 <tr>
 <td>id</td>
