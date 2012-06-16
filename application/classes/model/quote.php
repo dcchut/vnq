@@ -145,6 +145,17 @@ class Model_Quote extends ORM
     }
 
     /**
+     * Get all quotes ever
+     * @return Model_Quote
+     */
+    public function all()
+    {
+        return $this->reset()
+                    ->order_by('date','ASC')
+                    ->find_all();
+    }
+
+    /**
      * Is this quote publically viewable?
      * @return bool
      */

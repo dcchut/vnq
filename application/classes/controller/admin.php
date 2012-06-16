@@ -35,6 +35,17 @@ class Controller_Admin extends Controller_Site
         // redirect back home
         Request::instance()->redirect('admin/moderate');
     }
+    /**
+     *  Show detailed information about all submitted quotes
+     */
+    public function action_view()
+    {
+        // get all the quotes ever
+        $quotes = ORM::factory('quote')->all();
+        
+        // show it
+        $this->template->content .= View::factory('admin/view', array('quotes' => $quotes));
+    }
     
     /**
      *  Show the quotes that need to be moderated
