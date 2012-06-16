@@ -50,7 +50,7 @@ textarea {
 }
 
 .arow:nth-child(odd) {
-    background-color: #eee;
+    background-color: #e0e0e0;
 }
 .arow:nth-child(even) {
     background-color: #fff;
@@ -64,6 +64,7 @@ textarea {
 .acol {
     text-align: center;
     float: left;
+    padding-top: 5px;
 }
 
 .bcol {
