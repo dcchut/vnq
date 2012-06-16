@@ -7,7 +7,7 @@
     <span class="acol acol_ip">ip</span>
     <br />
     <?php foreach($quotes as $quote): ?>
-        <div class="quote">
+        <div class="row">
             <span class="bcol acol_id"><?php echo $quote->id; ?></span>
             <span class="bcol acol_date"><?php echo $quote->date; ?></span>
             <span class="bcol acol_quote"><?php echo htmlentities(substr($quote->quote,0,20)); ?></span>
