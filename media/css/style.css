@@ -51,17 +51,17 @@ textarea {
     margin-left:0px;
 }
 
-.acol_id, .aup_id {
+.acol_id, .acol_up {
     width: 50px;
 }
-.astatus_id {
+.acol_status {
     width: 150px;
 }
-.adate_id,.aip_id {
+.acol_date,.acol_ip {
     width: 200px;
 }
-.aquote_id {
-    width: 300px;
+.acol_quote {
+    width: 600px;
 }
 
 .quotehead {
