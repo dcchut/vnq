@@ -44,7 +44,7 @@ textarea {
 }
 
 .arow {
-    width: 800px;
+    width: 725px;
     height: 25px;
     clear: both; 
 }
@@ -62,7 +62,6 @@ textarea {
     clear: both; 
 }
 .acol {
-    background-color: #CCFF33;
     text-align: center;
     float: left;
 }
