@@ -44,17 +44,20 @@ textarea {
 }
 
 .acol_id, .aup_id, .astatus_id {
+    background-color: #CCFF33;
     width: 50px;
     text-align: center;
     float: left;
 }
 .adate_id,.aip_id {
-    width: 100px;
+    background-color: #CCFF33;
+    width: 200px;
     text-align: center;
     float: left;
 }
 .aquote_id {
-    width: 200px;
+    background-color: #CCFF33;
+    width: 300px;
     text-align: center;
     float: left;
 }
