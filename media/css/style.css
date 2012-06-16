@@ -44,9 +44,8 @@ textarea {
 }
 
 .arow {
-    clear: both;
-    position: relative;
-    border: 1px solid #990000; 
+    height: 25px;
+    border: 1px solid #0000; 
 }
 
 .acol {
