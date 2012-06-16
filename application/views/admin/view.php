@@ -5,6 +5,7 @@
     <span class="aup_id">up</span>
     <span class="astatus_id">status</span>
     <span class="aip_id">ip</span>
+    <br />
 </div>
 
 <table>
