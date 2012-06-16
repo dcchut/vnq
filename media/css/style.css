@@ -43,6 +43,11 @@ textarea {
     background-color: #E0E0E0;
 }
 
+.aviewid {
+    width: 200px;
+    text-align: center;
+}
+
 .quotehead {
     background-color: #CCFF33;
 }

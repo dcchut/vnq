@@ -148,10 +148,10 @@ class Model_Quote extends ORM
      * Get all quotes ever
      * @return Model_Quote
      */
-    public function all()
+    public function all($order = 'DESC')
     {
         return $this->reset()
-                    ->order_by('date','ASC')
+                    ->order_by('date',$order)
                     ->find_all();
     }
 
