@@ -5,7 +5,7 @@ CREATE TABLE `quotes` (
   `up` INTEGER(8) NOT NULL,
   `down` INTEGER(8) NOT NULL,
   `status` INTEGER(4) NOT NULL,
-  `quotes` TEXT NOT NULL default '127.0.0.1'
+  `ip` TEXT NOT NULL default '127.0.0.1'
 );
 CREATE TABLE `users` (
   `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
