@@ -43,10 +43,19 @@ textarea {
     background-color: #E0E0E0;
 }
 
-.aviewid {
-    width: 200px;
+.acol {
     text-align: center;
-    float:left;
+    float: left;
+}
+
+.acol_id, .aup_id, .astatus_id {
+    width: 50px;
+}
+.adate_id,.aip_id {
+    width: 100px;
+}
+.aquote_id {
+    width: 200px;
 }
 
 .quotehead {
