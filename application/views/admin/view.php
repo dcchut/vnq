@@ -10,10 +10,10 @@
     <?php foreach($quotes as $quote): ?>
         <div class="arow">
             <span class="bcol acol_id"><?php echo $quote->id; ?></span>
-            <span class="bcol acol_date"><?php echo $quote->date; ?></span>
+            <span class="bcol acol_date"><?php echo date("H:i:s d/m/Y", $quote->date); ?></span>
             <span class="bcol acol_up"><?php echo $quote->up; ?></span>
             <span class="bcol acol_status"><?php echo $quote->status; ?></span>
-            <span class="bcol acol_ip"><?php echo $quote->ip; ?></span>
+            <span class="bcol acol_ip lcol"><?php echo $quote->ip; ?></span>
             <div class="aclr"></div>
         </div>
     <?php endforeach; ?>

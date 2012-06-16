@@ -45,7 +45,6 @@ textarea {
 
 .arow {
     height: 25px;
-    border: 1px solid #000000;
     clear: both; 
 }
 .aclr {
@@ -79,6 +78,10 @@ textarea {
 }
 .acol_ip {
     width: 400px;
+}
+
+.lcol {
+    text-align: left;
 }
 
 .quotehead {
