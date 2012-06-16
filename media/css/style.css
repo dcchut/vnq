@@ -46,6 +46,7 @@ textarea {
 .aviewid {
     width: 200px;
     text-align: center;
+    float:left;
 }
 
 .quotehead {
