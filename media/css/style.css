@@ -43,6 +43,10 @@ textarea {
     background-color: #E0E0E0;
 }
 
+.arow {
+    height: 20px;
+}
+
 .acol {
     background-color: #CCFF33;
     text-align: center;
