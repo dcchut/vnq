@@ -1,12 +1,10 @@
 <div class="container">
-    <div class="acol">
-        <span class="acol_id">id</span>
-        <span class="adate_id">date</span>
-        <span class="aquote_id">quote</span>
-        <span class="aup_id">up</span>
-        <span class="astatus_id">status</span>
-        <span class="aip_id">ip</span>
-    </div>
+    <span class="acol_id">id</span>
+    <span class="adate_id">date</span>
+    <span class="aquote_id">quote</span>
+    <span class="aup_id">up</span>
+    <span class="astatus_id">status</span>
+    <span class="aip_id">ip</span>
 </div>
 
 <table>
