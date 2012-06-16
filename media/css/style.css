@@ -44,6 +44,7 @@ textarea {
 }
 
 .arow {
+    width: 700px;
     height: 25px;
     clear: both; 
 }
@@ -64,8 +65,6 @@ textarea {
     background-color: #CCFF33;
     text-align: center;
     float: left;
-    margin: 5px;
-    margin-left:0px;
 }
 
 .bcol {
