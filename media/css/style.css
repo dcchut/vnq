@@ -45,9 +45,14 @@ textarea {
 
 .arow {
     height: 25px;
-    border: 1px solid #0000; 
+    border: 1px solid #000000;
+    clear: both; 
 }
-
+.aclr {
+    font-size: 0px;
+    line-height: 0px;
+    clear: both; 
+}
 .acol {
     background-color: #CCFF33;
     text-align: center;
