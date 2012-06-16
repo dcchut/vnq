@@ -74,11 +74,11 @@ textarea {
 .acol_status {
     width: 150px;
 }
-.acol_date,.acol_ip {
+.acol_date {
     width: 200px;
 }
-.acol_quote {
-    width: 250px;
+.acol_ip {
+    width: 400px;
 }
 
 .quotehead {
