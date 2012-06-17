@@ -4,7 +4,7 @@
     <span class="acol acol_date">date</span>
     <span class="acol acol_up">up</span>
     <span class="acol acol_status">status</span>
-    <span class="acol acol_ip">ip</span>
+    <span class="acol acol_ip lcol">ip</span>
     <div class="aclr"></div>
 </div>
     <?php foreach($quotes as $quote): ?>
