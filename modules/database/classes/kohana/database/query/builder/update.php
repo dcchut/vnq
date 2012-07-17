@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Database query builder for UPDATE statements.
+ * Database query builder for UPDATE statements. See [Query Builder](/database/query/builder) for usage and examples.
  *
  * @package    Kohana/Database
  * @category   Query
@@ -22,10 +22,13 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where 
 	 * @param   mixed  table name or array($table, $alias) or object
 	 * @return  void
 	 */
-	public function __construct($table)
+	public function __construct($table = NULL)
 	{
-		// Set the inital table name
-		$this->_table = $table;
+		if ($table)
+		{
+			// Set the inital table name
+			$this->_table = $table;
+		}
 
 		// Start the query with no SQL
 		return parent::__construct(Database::UPDATE, '');
@@ -94,7 +97,21 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where 
 			$query .= ' WHERE '.$this->_compile_conditions($db, $this->_where);
 		}
 
-		return $query;
+		if ( ! empty($this->_order_by))
+		{
+			// Add sorting
+			$query .= ' '.$this->_compile_order_by($db, $this->_order_by);
+		}
+
+		if ($this->_limit !== NULL)
+		{
+			// Add limiting
+			$query .= ' LIMIT '.$this->_limit;
+		}
+
+		$this->_sql = $query;
+
+		return parent::compile($db);
 	}
 
 	public function reset()
@@ -104,7 +121,11 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where 
 		$this->_set   =
 		$this->_where = array();
 
+		$this->_limit = NULL;
+
 		$this->_parameters = array();
+
+		$this->_sql = NULL;
 
 		return $this;
 	}

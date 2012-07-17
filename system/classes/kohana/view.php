@@ -7,8 +7,8 @@
  * @package    Kohana
  * @category   Base
  * @author     Kohana Team
- * @copyright  (c) 2008-2009 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @copyright  (c) 2008-2011 Kohana Team
+ * @license    http://kohanaframework.org/license
  */
 class Kohana_View {
 
@@ -48,8 +48,8 @@ class Kohana_View {
 
 		if (View::$_global_data)
 		{
-			// Import the global view variables to local namespace and maintain references
-			extract(View::$_global_data, EXTR_REFS);
+			// Import the global view variables to local namespace
+			extract(View::$_global_data, EXTR_SKIP);
 		}
 
 		// Capture the view output
@@ -137,7 +137,7 @@ class Kohana_View {
 			$this->set_filename($file);
 		}
 
-		if ( $data !== NULL)
+		if ($data !== NULL)
 		{
 			// Add the values to the current data
 			$this->_data = $data + $this->_data;
@@ -158,11 +158,11 @@ class Kohana_View {
 	 */
 	public function & __get($key)
 	{
-		if (isset($this->_data[$key]))
+		if (array_key_exists($key, $this->_data))
 		{
 			return $this->_data[$key];
 		}
-		elseif (isset(View::$_global_data[$key]))
+		elseif (array_key_exists($key, View::$_global_data))
 		{
 			return View::$_global_data[$key];
 		}
@@ -230,7 +230,7 @@ class Kohana_View {
 		catch (Exception $e)
 		{
 			// Display the exception message
-			Kohana::exception_handler($e);
+			Kohana_Exception::handler($e);
 
 			return '';
 		}
@@ -243,13 +243,13 @@ class Kohana_View {
 	 *
 	 * @param   string  view filename
 	 * @return  View
-	 * @throws  Kohana_View_Exception
+	 * @throws  View_Exception
 	 */
 	public function set_filename($file)
 	{
 		if (($path = Kohana::find_file('views', $file)) === FALSE)
 		{
-			throw new Kohana_View_Exception('The requested view :file could not be found', array(
+			throw new View_Exception('The requested view :file could not be found', array(
 				':file' => $file,
 			));
 		}
@@ -324,7 +324,7 @@ class Kohana_View {
 	 *
 	 * @param    string  view filename
 	 * @return   string
-	 * @throws   Kohana_View_Exception
+	 * @throws   View_Exception
 	 * @uses     View::capture
 	 */
 	public function render($file = NULL)
@@ -336,7 +336,7 @@ class Kohana_View {
 
 		if (empty($this->_file))
 		{
-			throw new Kohana_View_Exception('You must set the file to use within your view before rendering');
+			throw new View_Exception('You must set the file to use within your view before rendering');
 		}
 
 		// Combine local and global data and capture the output

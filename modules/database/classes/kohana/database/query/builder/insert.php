@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Database query builder for INSERT statements.
+ * Database query builder for INSERT statements. See [Query Builder](/database/query/builder) for usage and examples.
  *
  * @package    Kohana/Database
  * @category   Query
@@ -26,12 +26,15 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder {
 	 * @param   array  column names
 	 * @return  void
 	 */
-	public function __construct($table, array $columns = NULL)
+	public function __construct($table = NULL, array $columns = NULL)
 	{
-		// Set the inital table name
-		$this->_table = $table;
+		if ($table)
+		{
+			// Set the inital table name
+			$this->_table = $table;
+		}
 
-		if ( ! empty($columns))
+		if ($columns)
 		{
 			// Set the column names
 			$this->_columns = $columns;
@@ -119,7 +122,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder {
 		$query = 'INSERT INTO '.$db->quote_table($this->_table);
 
 		// Add the column names
-		$query .= ' ('.implode(', ', array_map(array($db, 'quote_identifier'), $this->_columns)).') ';
+		$query .= ' ('.implode(', ', array_map(array($db, 'quote_column'), $this->_columns)).') ';
 
 		if (is_array($this->_values))
 		{
@@ -129,16 +132,16 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder {
 			$groups = array();
 			foreach ($this->_values as $group)
 			{
-				foreach ($group as $i => $value)
+				foreach ($group as $offset => $value)
 				{
-					if (is_string($value) AND isset($this->_parameters[$value]))
+					if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === FALSE)
 					{
-						// Use the parameter value
-						$group[$i] = $this->_parameters[$value];
+						// Quote the value, it is not a parameter
+						$group[$offset] = $db->quote($value);
 					}
 				}
 
-				$groups[] = '('.implode(', ', array_map($quote, $group)).')';
+				$groups[] = '('.implode(', ', $group).')';
 			}
 
 			// Add the values
@@ -150,7 +153,9 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder {
 			$query .= (string) $this->_values;
 		}
 
-		return $query;
+		$this->_sql = $query;
+
+		return parent::compile($db);;
 	}
 
 	public function reset()
@@ -161,6 +166,8 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder {
 		$this->_values  = array();
 
 		$this->_parameters = array();
+
+		$this->_sql = NULL;
 
 		return $this;
 	}

@@ -17,11 +17,11 @@
             </div>
             <div id="links"><?php
                 if (VNQ::is_logged_in()) {
-                    echo HTML::anchor('admin/moderate', 'moderate') . ' (' . $unmoderated_quotes . ') - ';
+                    echo HTML::anchor('admin/moderate', 'moderate') . ' (<span id="unquotes">' . $unmoderated_quotes . '</span>) - ';
                     echo HTML::anchor('admin/view', 'useless table') . ' - ';
                 }
 
-                echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top'); ?> - <?php echo HTML::anchor('quotes/recent', 'recent');
+                echo HTML::anchor('quotes/submit', 'submit'); ?> - <?php echo HTML::anchor('quotes/top', 'top');
                 echo ' - ';
                 
                 if (VNQ::is_logged_in())

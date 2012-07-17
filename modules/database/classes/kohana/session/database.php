@@ -42,9 +42,6 @@ class Kohana_Session_Database extends Session {
 	// The old session id
 	protected $_update_id;
 
-	// Update the session?
-	protected $_update = FALSE;
-
 	public function __construct(array $config = NULL, $id = NULL)
 	{
 		if ( ! isset($config['group']))
@@ -84,7 +81,12 @@ class Kohana_Session_Database extends Session {
 		}
 	}
 
-	public function _read($id = NULL)
+	public function id()
+	{
+		return $this->_session_id;
+	}
+
+	protected function _read($id = NULL)
 	{
 		if ($id OR $id = Cookie::get($this->_name))
 		{
@@ -170,6 +172,16 @@ class Kohana_Session_Database extends Session {
 
 		// Update the cookie with the new session id
 		Cookie::set($this->_name, $this->_session_id, $this->_lifetime);
+
+		return TRUE;
+	}
+
+	/**
+	 * @return  bool
+	 */
+	protected function _restart()
+	{
+		$this->_regenerate();
 
 		return TRUE;
 	}

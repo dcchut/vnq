@@ -35,23 +35,26 @@ class Kohana_Database_PDOSQLite extends Kohana_Database_PDO {
 		return $tables;
 	}
 	
-	public function list_columns($table, $like = NULL) 
-	{ 
-		if (is_string($like)) 
-		{ 
-			throw new Kohana_Exception('Database method :method is not supported by :class', array(':method' => __FUNCTION__, ':class' => __CLASS__));
-		} 
-		
-		// Find all column names 
-		$result = $this->query(Database::SELECT, 'PRAGMA table_info('.$table.')', FALSE); 
-		
-		$columns = array(); 
-		foreach ($result as $row) 
-		{ 
-			// Get the column name from the results 
-			$columns[$row['name']] = $row['name']; 
-		}
-		
-		return $columns; 
-	} 
+	
+    public function list_columns($table, $like = NULL, $add_prefix = TRUE)
+    {
+        if (is_string($like))
+        {
+            throw new Kohana_Exception('Database method :method is not supported by :class',
+                                        array(':method' => __FUNCTION__, 
+                                              ':class' => __CLASS__));
+        }
+
+        // Find all column names
+        $result = $this->query(Database::SELECT, 'PRAGMA table_info('.$table.')', FALSE);
+
+        $columns = array();
+        foreach ($result as $row)
+        {
+            // Get the column name from the results
+            $columns[$row['name']] = $row['name'];
+        }
+
+        return $columns;
+    }
 }

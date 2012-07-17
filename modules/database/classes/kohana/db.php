@@ -1,6 +1,17 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Database object creation helper methods.
+ * Provides a shortcut to get Database related objects for [making queries](../database/query).
+ *
+ * Shortcut     | Returned Object
+ * -------------|---------------
+ * [`DB::query()`](#query)   | [Database_Query]
+ * [`DB::insert()`](#insert) | [Database_Query_Builder_Insert]
+ * [`DB::select()`](#select),<br />[`DB::select_array()`](#select_array) | [Database_Query_Builder_Select]
+ * [`DB::update()`](#update) | [Database_Query_Builder_Update]
+ * [`DB::delete()`](#delete) | [Database_Query_Builder_Delete]
+ * [`DB::expr()`](#expr)     | [Database_Expression]
+ *
+ * You pass the same parameters to these functions as you pass to the objects they return.
  *
  * @package    Kohana/Database
  * @category   Base
@@ -76,7 +87,7 @@ class Kohana_DB {
 	 * @param   array   list of column names or array($column, $alias) or object
 	 * @return  Database_Query_Builder_Insert
 	 */
-	public static function insert($table, array $columns = NULL)
+	public static function insert($table = NULL, array $columns = NULL)
 	{
 		return new Database_Query_Builder_Insert($table, $columns);
 	}
@@ -90,7 +101,7 @@ class Kohana_DB {
 	 * @param   string  table to update
 	 * @return  Database_Query_Builder_Update
 	 */
-	public static function update($table)
+	public static function update($table = NULL)
 	{
 		return new Database_Query_Builder_Update($table);
 	}
@@ -104,7 +115,7 @@ class Kohana_DB {
 	 * @param   string  table to delete from
 	 * @return  Database_Query_Builder_Delete
 	 */
-	public static function delete($table)
+	public static function delete($table = NULL)
 	{
 		return new Database_Query_Builder_Delete($table);
 	}
@@ -114,13 +125,16 @@ class Kohana_DB {
 	 * is the only way to use SQL functions within query builders.
 	 *
 	 *     $expression = DB::expr('COUNT(users.id)');
+	 *     $query = DB::update('users')->set(array('login_count' => DB::expr('login_count + 1')))->where('id', '=', $id);
+	 *     $users = ORM::factory('user')->where(DB::expr("BINARY `hash`"), '=', $hash)->find();
 	 *
 	 * @param   string  expression
+	 * @param   array   parameters
 	 * @return  Database_Expression
 	 */
-	public static function expr($string)
+	public static function expr($string, $parameters = array())
 	{
-		return new Database_Expression($string);
+		return new Database_Expression($string, $parameters);
 	}
 
 } // End DB
