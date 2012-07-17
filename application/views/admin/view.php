@@ -21,27 +21,3 @@
         </div>
     <?php endforeach; ?>
 </div>
-<script type="text/javascript">
-$(document).ready(function(){
-    var uhide = false;
-    var rfloat = $("#rfloat");
-    $(".urow").mouseenter(function(){
-        // position of this row
-        var position = $(this).offset();
-        // quote id we are currently moused over
-        var id = $(this).children('.acol_id').children('a').text().substring(1);
-        
-        uhide = false;
-        
-        $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : id}, function(data){
-            if (!uhide) {
-                var text = $('<div />').text(data).html();
-                $(rfloat).html(text.replace(/\n/g,'<br/>')).css({top: position.top}).show('slow');
-            }
-        });
-    }).mouseleave(function(){
-        $("#rfloat").hide();
-        uhide = true;
-    });
-});
-</script>
