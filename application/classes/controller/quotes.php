@@ -34,9 +34,11 @@ class Controller_Quotes extends Controller_Site
         
         // show them nice shit
         $this->template->subtitle = 'quote submitted';
-        $this->template->content  = View::factory('quotes/submit2');
+        $this->template->content = View::factory('quotes/submit2');
+        
+        // we must increment the number of unmoderated quotes
+        $this->template->unmoderated_quotes++;
     }
-    
     
     public function action_view($id)
     {

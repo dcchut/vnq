@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Database query builder for DELETE statements.
+ * Database query builder for DELETE statements. See [Query Builder](/database/query/builder) for usage and examples.
  *
  * @package    Kohana/Database
  * @category   Query
@@ -19,10 +19,13 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where 
 	 * @param   mixed  table name or array($table, $alias) or object
 	 * @return  void
 	 */
-	public function __construct($table)
+	public function __construct($table = NULL)
 	{
-		// Set the inital table name
-		$this->_table = $table;
+		if ($table)
+		{
+			// Set the inital table name
+			$this->_table = $table;
+		}
 
 		// Start the query with no SQL
 		return parent::__construct(Database::DELETE, '');
@@ -70,7 +73,9 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where 
 			$query .= ' LIMIT '.$this->_limit;
 		}
 
-		return $query;
+		$this->_sql = $query;
+
+		return parent::compile($db);
 	}
 
 	public function reset()
@@ -79,6 +84,8 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where 
 		$this->_where = array();
 
 		$this->_parameters = array();
+
+		$this->_sql = NULL;
 
 		return $this;
 	}

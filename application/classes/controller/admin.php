@@ -7,7 +7,7 @@ class Controller_Admin extends Controller_Site
         parent::before();
 
         if (!VNQ::is_logged_in())
-            return  self::home();
+            return self::home();
         
         // All the pages here need the jscript, chuck it in there
         $this->template->scripts = array('admin/jscript');
@@ -19,8 +19,7 @@ class Controller_Admin extends Controller_Site
     public function action_jscript()
     {
         $this->auto_render = FALSE;
-        
-        $this->request->response = View::factory('admin/jscript');
+        $this->response->body(View::factory('admin/jscript'));
     }
 
     public function action_new_mod()
@@ -33,7 +32,7 @@ class Controller_Admin extends Controller_Site
         Model_User::add_user($username, $password, $secret);
 
         // redirect back home
-        Request::instance()->redirect('admin/moderate');
+        Request::current()->redirect('admin/moderate');
     }
     /**
      *  Show detailed information about all submitted quotes

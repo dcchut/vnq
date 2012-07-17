@@ -1,8 +1,8 @@
-<?php defined('SYSPATH') or die('No direct access allowed.');
+<?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Upload helper class for working with uploaded files and [Validate].
+ * Upload helper class for working with uploaded files and [Validation].
  *
- *     $array = Validate::factory($_FILES);
+ *     $array = Validation::factory($_FILES);
  *
  * [!!] Remember to define your form with "enctype=multipart/form-data" or file
  * uploading will not work!
@@ -15,8 +15,8 @@
  * @package    Kohana
  * @category   Helpers
  * @author     Kohana Team
- * @copyright  (c) 2007-2009 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @copyright  (c) 2007-2011 Kohana Team
+ * @license    http://kohanaframework.org/license
  */
 class Kohana_Upload {
 
@@ -39,7 +39,7 @@ class Kohana_Upload {
 	 *     if ($array->check())
 	 *     {
 	 *         // Upload is valid, save it
-	 *         Upload::save($_FILES['file']);
+	 *         Upload::save($array['file']);
 	 *     }
 	 *
 	 * @param   array    uploaded file data
@@ -66,7 +66,7 @@ class Kohana_Upload {
 		if (Upload::$remove_spaces === TRUE)
 		{
 			// Remove spaces from the filename
-			$filename = preg_replace('/\s+/', '_', $filename);
+			$filename = preg_replace('/\s+/u', '_', $filename);
 		}
 
 		if ($directory === NULL)
@@ -78,7 +78,7 @@ class Kohana_Upload {
 		if ( ! is_dir($directory) OR ! is_writable(realpath($directory)))
 		{
 			throw new Kohana_Exception('Directory :dir must be writable',
-				array(':dir' => Kohana::debug_path($directory)));
+				array(':dir' => Debug::path($directory)));
 		}
 
 		// Make the filename into a complete path
@@ -131,14 +131,13 @@ class Kohana_Upload {
 		return (isset($file['error'])
 			AND isset($file['tmp_name'])
 			AND $file['error'] === UPLOAD_ERR_OK
-			AND is_uploaded_file($file['tmp_name'])
-		);
+			AND is_uploaded_file($file['tmp_name']));
 	}
 
 	/**
 	 * Test if an uploaded file is an allowed file type, by extension.
 	 *
-	 *     $array->rule('file', 'Upload::type', array(array('jpg', 'png', 'gif')));
+	 *     $array->rule('file', 'Upload::type', array(':value', array('jpg', 'png', 'gif')));
 	 *
 	 * @param   array    $_FILES item
 	 * @param   array    allowed file extensions
@@ -156,20 +155,22 @@ class Kohana_Upload {
 
 	/**
 	 * Validation rule to test if an uploaded file is allowed by file size.
-	 * File sizes are defined as: SB, where S is the size (1, 15, 300, etc) and
-	 * B is the byte modifier: (B)ytes, (K)ilobytes, (M)egabytes, (G)igabytes.
+	 * File sizes are defined as: SB, where S is the size (1, 8.5, 300, etc.)
+	 * and B is the byte unit (K, MiB, GB, etc.). All valid byte units are
+	 * defined in Num::$byte_units
 	 *
-	 *     $array->rule('file', 'Upload::size', array('1M'))
+	 *     $array->rule('file', 'Upload::size', array(':value', '1M'))
+	 *     $array->rule('file', 'Upload::size', array(':value', '2.5KiB'))
 	 *
 	 * @param   array    $_FILES item
-	 * @param   string   maximum file size
+	 * @param   string   maximum file size allowed
 	 * @return  bool
 	 */
 	public static function size(array $file, $size)
 	{
 		if ($file['error'] === UPLOAD_ERR_INI_SIZE)
 		{
-			// Upload is larger than PHP allowed size
+			// Upload is larger than PHP allowed size (upload_max_filesize)
 			return FALSE;
 		}
 
@@ -179,27 +180,77 @@ class Kohana_Upload {
 			return TRUE;
 		}
 
-		// Only one size is allowed
-		$size = strtoupper(trim($size));
-
-		if ( ! preg_match('/^[0-9]++[BKMG]$/', $size))
-		{
-			throw new Kohana_Exception('Size does not contain a digit and a byte value: :size', array(
-				':size' => $size,
-			));
-		}
-
-		// Make the size into a power of 1024
-		switch (substr($size, -1))
-		{
-			case 'G': $size = intval($size) * pow(1024, 3); break;
-			case 'M': $size = intval($size) * pow(1024, 2); break;
-			case 'K': $size = intval($size) * pow(1024, 1); break;
-			default:  $size = intval($size);                break;
-		}
+		// Convert the provided size to bytes for comparison
+		$size = Num::bytes($size);
 
 		// Test that the file is under or equal to the max size
 		return ($file['size'] <= $size);
+	}
+
+	/**
+	 * Validation rule to test if an upload is an image and, optionally, is the correct size.
+	 *
+	 *     // The "image" file must be an image
+	 *     $array->rule('image', 'Upload::image')
+	 *
+	 *     // The "photo" file has a maximum size of 640x480 pixels
+	 *     $array->rule('photo', 'Upload::image', array(640, 480));
+	 *
+	 *     // The "image" file must be exactly 100x100 pixels
+	 *     $array->rule('image', 'Upload::image', array(100, 100, TRUE));
+	 *
+	 *
+	 * @param   array    $_FILES item
+	 * @param   integer  maximum width of image
+	 * @param   integer  maximum height of image
+	 * @param   boolean  match width and height exactly?
+	 * @return  boolean
+	 */
+	public static function image(array $file, $max_width = NULL, $max_height = NULL, $exact = FALSE)
+	{
+		if (Upload::not_empty($file))
+		{
+			try
+			{
+				// Get the width and height from the uploaded image
+				list($width, $height) = getimagesize($file['tmp_name']);
+			}
+			catch (ErrorException $e)
+			{
+				// Ignore read errors
+			}
+
+			if (empty($width) OR empty($height))
+			{
+				// Cannot get image size, cannot validate
+				return FALSE;
+			}
+
+			if ( ! $max_width)
+			{
+				// No limit, use the image width
+				$max_width = $width;
+			}
+
+			if ( ! $max_height)
+			{
+				// No limit, use the image height
+				$max_height = $height;
+			}
+
+			if ($exact)
+			{
+				// Check if dimensions match exactly
+				return ($width === $max_width AND $height === $max_height);
+			}
+			else
+			{
+				// Check if size is within maximum dimensions
+				return ($width <= $max_width AND $height <= $max_height);
+			}
+		}
+
+		return FALSE;
 	}
 
 } // End upload

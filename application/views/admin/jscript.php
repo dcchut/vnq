@@ -36,6 +36,9 @@ function post_status(id, status, t){
     $.post('<?php echo URL::site('admin/moderate2'); ?>', {'id' : id, 'status' : status, 't' : t}, function(data){
         if (data == 1){
             $("#q" + id).hide("slow", function(){
+                // show the number of quotes still to be moderated
+                $("#unquotes").text($(".qmain:visible").size());
+                
                 // if we've moderated everything, show a nice message
                 if ($(".qmain:visible").size() == 0)
                     location.reload();

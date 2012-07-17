@@ -7,7 +7,7 @@ class Controller_Site extends Controller_Template
     
     protected static function home()
     {
-        return Request::instance()->redirect('');
+        return Request::current()->redirect('');
     }
     
     public function before()
@@ -19,22 +19,9 @@ class Controller_Site extends Controller_Template
             $this->template->title   = 'VNQ';
             $this->template->content = '';
 
-            $this->template->styles = array();
+            $this->template->styles = array('media/css/style.css');
             $this->template->scripts = array();
-        }
-    }
-    
-    public function after()
-    {
-        parent::after();
-        
-        if ($this->auto_render)
-        {
-            $styles = array('media/css/style.css',);
             
-            $this->template->styles = array_merge($this->template->styles, $styles);
-            
-            // only need to count these if we are logged in as an admin
             if (VNQ::is_logged_in()) {
                 $this->template->unmoderated_quotes = count(ORM::factory('quote')->unmoderated());
             } else {
@@ -42,7 +29,7 @@ class Controller_Site extends Controller_Template
             }
         }
     }
-
+    
     public function action_login()
     {
         if (VNQ::is_logged_in())
@@ -60,7 +47,7 @@ class Controller_Site extends Controller_Template
 
         // pee off, peon
         if (!$user)
-            Request::instance()->redirect('site/login');
+            Request::current()->redirect('site/login');
             
         VNQ::login();
         self::home();
@@ -82,7 +69,7 @@ class Controller_Site extends Controller_Template
     public function action_vnqjs()
     {
         $this->auto_render       = FALSE;
-        $this->request->response = View::factory('site/vnqjs');
+        $this->response->body(View::factory('site/vnqjs'));
     }
 
     /**
