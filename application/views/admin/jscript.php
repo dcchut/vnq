@@ -33,22 +33,33 @@ $(document).ready(function(){
     
     var uhide = false;
     var rfloat = $("#rfloat");
+    var qcache = new Object;
+    
     $(".urow").mouseenter(function(){
         // position of this row
         var position = $(this).offset();
+        
         // quote id we are currently moused over
         var id = $(this).children('.acol_id').children('a').text().substring(1);
         
         var width = $(this).width() + 25;
         uhide = false;
         
-        $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : id}, function(data){
-            if (!uhide) {
-                var text = $('<div />').text(data).html();
-                $(rfloat).html(text.replace(/\n/g,'<br/>')).css({top: position.top,
-                                                                 left: position.left + width}).show('slow');
-            }
-        });
+        // have we cached the retrieved quote text for this?
+        if (qcache[id] != undefined) {
+            var text = $('<div />').text(qcache[id]).html();
+            $(rfloat).html(text.replace(/\n/g,'<br/>')).css({top: position.top,
+                                                             left: position.left + width}).show('fast');
+        } else {
+            $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : id}, function(data){
+                qcache[id] = data;
+                if (!uhide) {
+                    var text = $('<div />').text(data).html();
+                    $(rfloat).html(text.replace(/\n/g,'<br/>')).css({top: position.top,
+                                                                     left: position.left + width}).show('fast');
+                }
+            });
+        }
     }).mouseleave(function(){
         $("#rfloat").hide();
         uhide = true;
