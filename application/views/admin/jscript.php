@@ -39,12 +39,14 @@ $(document).ready(function(){
         // quote id we are currently moused over
         var id = $(this).children('.acol_id').children('a').text().substring(1);
         
+        var width = $(this).width() + 25;
         uhide = false;
         
         $.post('<?php echo URL::site('admin/moderate3'); ?>', {'id' : id}, function(data){
             if (!uhide) {
                 var text = $('<div />').text(data).html();
-                $(rfloat).html(text.replace(/\n/g,'<br/>')).css({top: position.top}).show('slow');
+                $(rfloat).html(text.replace(/\n/g,'<br/>')).css({top: position.top,
+                                                                 left: position.left + width}).show('slow');
             }
         });
     }).mouseleave(function(){
