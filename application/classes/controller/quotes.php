@@ -40,8 +40,9 @@ class Controller_Quotes extends Controller_Site
         $this->template->unmoderated_quotes++;
     }
     
-    public function action_view($id)
+    public function action_view()
     {
+        $id = $this->request->param('id');
         $quote = ORM::factory('quote', $id);
         
         if (!$quote->loaded() || !$quote->is_public())
