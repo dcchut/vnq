@@ -52,7 +52,8 @@ class Controller_Quotes extends Controller_Site
         $this->template->content  = VNQ::render_quote($quote);
     }
     
-    public function action_viewmultiple($ids) {
+    public function action_viewmultiple() {
+        $ids = $this->request->param('mqs');
         $valid = false;
         
         foreach (explode(",", $ids) as $qid) {
