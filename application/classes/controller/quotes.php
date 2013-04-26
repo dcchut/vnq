@@ -25,8 +25,13 @@ class Controller_Quotes extends Controller_Site
     public function action_submit2()
     {
         $quote_text = Arr::get($_POST, 'quote');
+        $token = Arr::get($_POST,'token');
         
         if (empty($quote_text))
+            return self::home();
+            
+        // check that the token matches
+        if (!Security::check($token))
             return self::home();
             
         // insert the quote, it doesn't appear to be empty
