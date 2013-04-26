@@ -25,7 +25,7 @@ class Controller_Quotes extends Controller_Site
     public function action_submit2()
     {
         $quote_text = Arr::get($_POST, 'quote');
-        $token = Arr::get($_POST,'token');
+        $token = Arr::get($_POST,'csrf');
         
         if (empty($quote_text))
             return self::home();
