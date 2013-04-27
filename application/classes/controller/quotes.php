@@ -117,7 +117,7 @@ class Controller_Quotes extends Controller_Site
     public function action_search2()
     {
         $search = Arr::get($_POST, 'search');
-        $search = preg_replace("/[^a-z0-9. ]+/i", "", $search);
+        $search = preg_replace("/[^a-z0-9\s]+/i", "", $search);
                 
         $this->request->redirect(Route::get('search')->uri(array('search'=>$search)));
     }
