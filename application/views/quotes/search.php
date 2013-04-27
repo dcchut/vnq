@@ -1,6 +1,6 @@
-<?php echo Form::open('quotes/search'); ?>
+<?php echo Form::open('quotes/search2'); ?>
 search: <?php 
-echo Form::input('search');
+echo Form::input('search', $search);
 echo ' ';
 echo Form::submit('submit', 'search');
 echo Form::close();

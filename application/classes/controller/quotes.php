@@ -103,16 +103,22 @@ class Controller_Quotes extends Controller_Site
     
     public function action_search()
     {
-        $search = Arr::get($_POST, 'search');
-       
-        if ($search) {
+        $search = $this->request->param('search');
+        $results = array();
+        
+        if ($search && strlen($search) > 0) {
             $results = ORM::factory('quote')->search($search);
-        } else {
-            $results = array();
         }
+        
         $this->template->subtitle = 'search quotes';
-        $this->template->content = View::factory('quotes/search', array('results' => $results));
+        $this->template->content = View::factory('quotes/search', array('search' => $search, 'results' => $results));
     }   
+    
+    public function action_search2()
+    {
+        $search = Arr::get($_POST, 'search');
+        $this->request->redirect(Route::get('search')->uri(array('search'=>$search)));
+    }
 
     /**
      * Get all comments relating to ninwa

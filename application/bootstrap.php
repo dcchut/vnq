@@ -118,6 +118,12 @@ Kohana::modules(array(
         'action'     => 'view',
     ));
     
+Route::set('search', 'quotes/search(/<search>)')
+    ->defaults(array(
+        'controller' => 'quotes',
+        'action'     => 'search',
+    ));
+    
 Route::set('multiquotes','<mqs>',
     array(
         'mqs' => '\d+(,\d+)*'
