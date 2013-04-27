@@ -165,6 +165,18 @@ class Model_Quote extends ORM
     }
 
     /**
+     * Get all the quotes relating to $term
+     * @return Model_Quote
+     */
+    public function search($term)
+    {
+        return $this->reset()->where('status', '=', 1)
+                             ->where('quote', 'like', '%' . $term . '%')
+                             ->order_by('up', 'DESC')
+                             ->find_all();
+    }
+
+    /**
      * Get all the quotes relating to ninwa
      * @return Model_Quote
      */
