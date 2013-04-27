@@ -171,7 +171,7 @@ class Model_Quote extends ORM
     public function search($term)
     {
         // clean up the search term thingo
-        $term = preg_replace("/[^a-z0-9. ]+/i", "", $term);
+        $term = preg_replace("/[^a-z0-9\s]+/i", "", $term);
         
         return $this->reset()->where('status', '=', 1)
                              ->where('quote', 'like', '%' . $term . '%')
