@@ -117,7 +117,7 @@ class Controller_Quotes extends Controller_Site
     public function action_search2()
     {
         $search = Arr::get($_POST, 'search');
-        $this->request->redirect(Route::get('search')->uri(array('search'=>$search)));
+        $this->request->redirect(Route::get('search')->uri(array('search'=>urlencode($search))));
     }
 
     /**
