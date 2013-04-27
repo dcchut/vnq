@@ -10,6 +10,11 @@ body, input {
 input {
   padding: 3px; }
 
+input.search {
+    background-color: #E6E6E6;
+    width: 150px;
+}
+
 textarea {
   width: 600px;
   height: 150px; }

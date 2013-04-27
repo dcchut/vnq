@@ -100,6 +100,19 @@ class Controller_Quotes extends Controller_Site
         $this->template->subtitle = 'top quotes';
         $this->template->content  = $this->paged_quotes('top', $page);
     }
+    
+    public function action_search()
+    {
+        $search = Arr::get($_POST, 'search');
+       
+        if ($search) {
+            $results = ORM::factory('quote')->search($search);
+        } else {
+            $results = array();
+        }
+        $this->template->subtitle = 'search quotes';
+        $this->template->content = View::factory('quotes/search', array('results' => $results));
+    }   
 
     /**
      * Get all comments relating to ninwa
