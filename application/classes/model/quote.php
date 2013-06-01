@@ -52,6 +52,11 @@ class Model_Quote extends ORM
             $quote->down   = 0;
             $quote->ip     = Request::$client_ip;
             
+            // this bot is a waste of space
+            if ($quote->ip == '188.143.232.31') {
+                return FALSE;
+            }
+            
             return $quote->save();
         }
         else
