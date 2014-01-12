@@ -1,1 +1,6 @@
-your quote has been successfully submitted, however moderation may take some time!<br />
+your quote has been successfully submitted<?php
+if ($status == 2) {
+?>
+, however moderation may take some time
+<?php 
+} ?>!<br />
