@@ -34,15 +34,23 @@ class Controller_Quotes extends Controller_Site
         if (!Security::check($token))
             return self::home();
             
-        // insert the quote, it doesn't appear to be empty
-        Model_Quote::insert_quote($quote_text, 2);
+        if (VNQ::is_logged_in()) {
+            // set mod submitted quotes to show
+            $status = 1;
+        } else {
+            // user is not logged in, increment the number of unmoderated quotes
+            $this->template->unmoderated_quotes++;
+            
+            // hide this until moderated
+            $status = 2;
+        }     
+       
+        // insert the quote
+        Model_Quote::insert_quote($quote_text, $status);
         
         // show them nice shit
         $this->template->subtitle = 'quote submitted';
-        $this->template->content = View::factory('quotes/submit2');
-        
-        // we must increment the number of unmoderated quotes
-        $this->template->unmoderated_quotes++;
+        $this->template->content = View::factory('quotes/submit2', array('status' => $status));
     }
     
     public function action_view()
