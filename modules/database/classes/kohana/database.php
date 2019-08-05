@@ -523,7 +523,6 @@ abstract class Kohana_Database {
 			{
 				// Quote the column in FUNC("column") identifiers
 				$column = preg_replace_callback('/"(.+?)"/', function($m) { return $this->quote_column($m[1]); }, $column);
-
 			}
 			elseif (strpos($column, '.') !== FALSE)
 			{
